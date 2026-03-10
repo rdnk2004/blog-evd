@@ -1,0 +1,330 @@
+/* =============================================
+   DeepaRam — Global Design System
+   Spiritual · Minimal · Contemplative
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  /* ── Color Palette ── */
+  --ivory: #f7f3ec;
+  /* warm ivory background */
+  --cream: #f0e9df;
+  /* soft cream sections */
+  --parchment: #e8dfd2;
+  /* parchment card bg */
+  --sandalwood: #c9a97a;
+  /* sandalwood beige mid-tone */
+  --gold: #b8870a;
+  /* subtle gold accent */
+  --gold-light: #d4a82f;
+  /* lighter gold for hover */
+  --gold-faint: rgba(184, 135, 10, 0.12);
+  /* faint gold tint */
+  --sage: #7a9180;
+  /* muted sage green */
+  --sage-light: #a8c4ae;
+  /* lighter sage */
+  --sage-faint: rgba(122, 145, 128, 0.12);
+  --charcoal: #2e2a24;
+  /* deep charcoal text */
+  --charcoal-mid: #534d45;
+  /* mid charcoal */
+  --charcoal-soft: #7a726a;
+  /* soft charcoal secondary text */
+  --border: #ddd4c5;
+  /* subtle border */
+  --white-tinted: #faf7f2;
+  /* near-white for cards */
+
+  /* ── Typography ── */
+  --font-display: 'Playfair Display', 'EB Garamond', Georgia, serif;
+  --font-serif: 'EB Garamond', 'Lora', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
+
+  /* ── Spacing ── */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+
+  /* ── Effects ── */
+  --shadow-soft: 0 4px 24px rgba(46, 42, 36, 0.06);
+  --shadow-hover: 0 12px 40px rgba(46, 42, 36, 0.10);
+  --shadow-card: 0 2px 16px rgba(46, 42, 36, 0.07);
+  --radius: 2px;
+  --radius-lg: 6px;
+
+  /* ── Transitions ── */
+  --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --trans: all 0.4s var(--ease);
+  --trans-fast: all 0.2s var(--ease);
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(122, 145, 128, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 90% 80%, rgba(184, 135, 10, 0.04) 0%, transparent 60%);
+}
+
+/* ── Typography ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--charcoal);
+  letter-spacing: 0.01em;
+}
+
+p {
+  margin-bottom: 1.1em;
+  color: var(--charcoal-mid);
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: var(--trans-fast);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Layout ── */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.container--narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* ── Section ── */
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--charcoal);
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--charcoal-soft);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Decorative Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0;
+  color: var(--sandalwood);
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border));
+}
+
+.divider::after {
+  background: linear-gradient(to left, transparent, var(--border));
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.8rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  transition: var(--trans);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: var(--ivory);
+}
+
+.btn--sage {
+  border-color: var(--sage);
+  color: var(--sage);
+}
+
+.btn--sage:hover {
+  background: var(--sage);
+  color: var(--ivory);
+}
+
+/* ── Scroll Reveal Animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gentlePulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1s var(--ease) forwards;
+}
+
+.fade-in {
+  animation: fadeIn 1.2s var(--ease) forwards;
+}
+
+/* ── Blockquote / Quote ── */
+blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--charcoal-soft);
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--sandalwood);
+  margin: var(--space-md) 0;
+  line-height: 1.8;
+}
+
+/* ── Ornamental leaf SVG ── */
+.leaf-ornament {
+  display: block;
+  margin: 0 auto;
+  opacity: 0.45;
+}
+
+/* ── Utility ── */
+.text-center {
+  text-align: center;
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.sage {
+  color: var(--sage);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sandalwood);
+}

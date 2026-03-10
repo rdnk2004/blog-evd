@@ -1,0 +1,179 @@
+/* ── Hero Section ── */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/hero-bg.png');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    transform: scale(1.04);
+    transition: transform 12s ease;
+    animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1.04);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(247, 243, 236, 0.35) 0%,
+            rgba(247, 243, 236, 0.50) 40%,
+            rgba(247, 243, 236, 0.80) 80%,
+            rgba(247, 243, 236, 1.0) 100%);
+}
+
+/* ── Hero Content ── */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 var(--space-md);
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+
+.hero-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Ornament ── */
+.hero-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--sandalwood);
+}
+
+.ornament-line {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--sandalwood));
+}
+
+.ornament-line:last-child {
+    background: linear-gradient(to left, transparent, var(--sandalwood));
+}
+
+.ornament-leaf {
+    color: var(--sandalwood);
+    opacity: 0.7;
+    animation: gentlePulse 4s ease-in-out infinite;
+}
+
+/* ── Name ── */
+.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    font-weight: 400;
+    letter-spacing: normal;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    line-height: 1;
+    text-shadow: 0 2px 20px rgba(247, 243, 236, 0.8);
+}
+
+/* ── Tagline ── */
+.hero-tagline {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--charcoal-soft);
+    letter-spacing: 0.04em;
+    margin-bottom: 2.5rem;
+}
+
+/* ── CTA ── */
+.hero-btn {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    padding: 0.85rem 2.4rem;
+    transition: var(--trans);
+}
+
+/* ── Scroll Indicator ── */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: gentlePulse 3s ease-in-out infinite;
+}
+
+.scroll-mouse {
+    width: 24px;
+    height: 38px;
+    border: 1.5px solid var(--sandalwood);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+}
+
+.scroll-wheel {
+    width: 3px;
+    height: 8px;
+    background: var(--sandalwood);
+    border-radius: 2px;
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    80% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+.scroll-label {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sandalwood);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .hero-name {
+        font-size: clamp(2.5rem, 14vw, 4rem);
+    }
+}
