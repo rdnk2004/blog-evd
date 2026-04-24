@@ -38,7 +38,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen flex flex-col bg-background text-foreground font-serif"
+        className="min-h-screen flex flex-col bg-background text-foreground font-serif overflow-x-hidden w-full"
         suppressHydrationWarning
       >
         <Header />

@@ -60,8 +60,9 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "#journey", label: "The Journey" },
-    { href: "#journal", label: "Journal" },
+    { href: "/#journey", label: "The Journey" },
+    { href: "/heartlines", label: "Heartlines" },
+    { href: "/#journal", label: "Soul Notes" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -117,8 +118,9 @@ export function Header() {
             <button
               type="button"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8"
+              className="md:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11"
             >
               <span className={`block w-6 h-[1.5px] bg-charcoal transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} />
               <span className={`block w-6 h-[1.5px] bg-charcoal transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
@@ -141,13 +143,13 @@ export function Header() {
           <div className="absolute bottom-[-20%] left-[-20%] w-[60vw] h-[60vw] bg-sage/10 rounded-full blur-[120px]" />
         </div>
 
-        <nav className="relative flex flex-col items-center gap-7">
+        <nav className="relative flex flex-col items-center gap-6 sm:gap-7">
           {navLinks.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-alex text-5xl text-charcoal/80 hover:text-charcoal transition-all duration-300 hover:tracking-wider"
+              className="font-alex text-4xl sm:text-5xl text-charcoal/80 hover:text-charcoal transition-all duration-300 hover:tracking-wider"
               style={{
                 transitionDelay: menuOpen ? `${i * 60}ms` : "0ms",
                 transform: menuOpen ? "translateY(0)" : "translateY(20px)",
@@ -161,7 +163,7 @@ export function Header() {
           <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
-            className="mt-6 px-8 py-3 bg-charcoal text-soft-beige text-xs uppercase tracking-[0.2em] font-semibold rounded-full hover:bg-warm-taupe transition-colors duration-300"
+            className="mt-6 px-8 py-3 bg-charcoal text-soft-beige text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold rounded-full hover:bg-warm-taupe transition-colors duration-300 shadow-sm hover:shadow-md"
           >
             Subscribe to Newsletter
           </a>
@@ -218,11 +220,13 @@ export function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
+                maxLength={100}
+                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                 className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 rounded-full text-soft-beige placeholder:text-soft-beige/30 text-sm focus:outline-none focus:border-warm-taupe/50 focus:bg-white/10 transition-all duration-300"
               />
               <button
                 type="submit"
-                className="px-8 py-3.5 bg-warm-taupe hover:bg-dusty-rose text-white text-xs uppercase tracking-[0.2em] font-semibold rounded-full transition-all duration-300 whitespace-nowrap"
+                className="px-8 py-3.5 bg-warm-taupe hover:bg-dusty-rose text-white text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold rounded-full transition-all duration-300 whitespace-nowrap"
               >
                 Join the Circle
               </button>
@@ -250,8 +254,9 @@ export function Footer() {
             <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-1">Explore</span>
             {[
               { href: "/", label: "Home" },
-              { href: "#journey", label: "The Journey" },
-              { href: "#journal", label: "Journal" },
+              { href: "/#journey", label: "The Journey" },
+              { href: "/heartlines", label: "Heartlines" },
+              { href: "/#journal", label: "Soul Notes" },
             ].map((l) => (
               <a key={l.href} href={l.href} className="text-soft-beige/50 hover:text-soft-beige text-sm transition-colors duration-300 font-light">
                 {l.label}
@@ -259,7 +264,6 @@ export function Footer() {
             ))}
           </div>
 
-          {/* Social */}
           <div className="flex flex-col items-center md:items-start gap-4">
             <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-1">Connect</span>
             {[
@@ -267,7 +271,7 @@ export function Footer() {
               { href: "#", label: "Pinterest", icon: "📌" },
               { href: "mailto:hello@deeparam.com", label: "hello@deeparam.com", icon: "✉️" },
             ].map((s) => (
-              <a key={s.label} href={s.href} className="flex items-center gap-2 text-soft-beige/50 hover:text-soft-beige text-sm transition-colors duration-300 font-light">
+              <a key={s.label} href={s.href} target={s.href.startsWith('mailto') ? undefined : "_blank"} rel="noopener noreferrer" className="flex items-center gap-2 text-soft-beige/50 hover:text-soft-beige text-sm transition-colors duration-300 font-light">
                 <span className="text-base">{s.icon}</span>
                 {s.label}
               </a>
