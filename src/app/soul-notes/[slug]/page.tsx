@@ -71,6 +71,7 @@ const notesData: Record<string, { title: string; date: string; category: string;
       "But when my eyes fell upon the name printed on it, time seemed to pause.",
       "It read:",
       "“Mataji.”",
+      "[IMAGE:mataji.jpeg]",
       "In that instant, something deep within me stirred.",
       "There were no words, no thoughts—only a knowing.",
       "A gentle, silent assurance.",
@@ -164,6 +165,19 @@ export default function NotePage() {
           {/* CONTENT */}
           <div className="w-full text-charcoal/85">
             {note.content.map((paragraph, index) => {
+              if (paragraph.startsWith("[IMAGE:")) {
+                const src = paragraph.replace("[IMAGE:", "").replace("]", "");
+                return (
+                  <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll" style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}>
+                    <img 
+                      src={`/${src}`} 
+                      alt="Story illustration" 
+                      className="rounded-2xl shadow-sm w-full max-w-md h-auto object-cover opacity-95 filter brightness-[0.95]"
+                    />
+                  </div>
+                );
+              }
+
               const isDialogue = paragraph.startsWith("“") || paragraph.startsWith("\"");
               const isShortThought = paragraph === "Will this fall off?" || 
                                      paragraph === "Perhaps there is a reason for this." ||

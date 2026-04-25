@@ -22,6 +22,7 @@ const musingsData: Record<string, { title: string; date: string; category: strin
       "Would she have forgotten?",
       "Even as these questions circled my mind, a small prayer lingered within me — that one day, without warning, she would appear again.",
       "Kaartu….",
+      "[IMAGE:kaartu.jpeg]",
       "She was a black cat with soft tinges of yellow and white brushed across her fur. The first name that came to my mind was Kaartu. In Malayalam, it means black — a word so familiar to my ears from a cartoon. The name felt natural, as if it had been waiting for her.",
       "For almost a month, she visited our home regularly. Morning, noon, and night — she would sit at our kitchen door as though it were part of her daily routine. Slowly, without announcement, she became a member of our home. I began keeping aside milk and a small dosa for her.",
       "Every morning she would already be there when I woke up, waiting patiently while I warmed milk from the refrigerator and prepared her dosa. She never rushed me. She simply watched.",
@@ -134,6 +135,19 @@ export default function MusingPage() {
           {/* CONTENT */}
           <div className="w-full text-charcoal/85">
             {musing.content.map((paragraph, index) => {
+              if (paragraph.startsWith("[IMAGE:")) {
+                const src = paragraph.replace("[IMAGE:", "").replace("]", "");
+                return (
+                  <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll" style={{ transitionDelay: `${Math.min(index * 0.02, 0.2)}s` }}>
+                    <img 
+                      src={`/${src}`} 
+                      alt="Story illustration" 
+                      className="rounded-2xl shadow-sm w-full max-w-md h-auto object-cover opacity-95 filter brightness-[0.95]"
+                    />
+                  </div>
+                );
+              }
+
               const isDialogue = paragraph.startsWith("“") || paragraph.startsWith("\"");
               const isShortThought = paragraph === "Will she be waiting at the doorstep today?" || 
                                      paragraph === "Maybe she had gone somewhere far." ||
