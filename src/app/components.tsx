@@ -60,9 +60,10 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/#journey", label: "The Journey" },
+    { href: "/#journey", label: "About Me" },
     { href: "/heartlines", label: "Heartlines" },
-    { href: "/#journal", label: "Soul Notes" },
+    { href: "/soul-notes", label: "Soul Notes" },
+    { href: "/musings", label: "Musings" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -254,9 +255,10 @@ export function Footer() {
             <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-1">Explore</span>
             {[
               { href: "/", label: "Home" },
-              { href: "/#journey", label: "The Journey" },
+              { href: "/#journey", label: "About Me" },
               { href: "/heartlines", label: "Heartlines" },
-              { href: "/#journal", label: "Soul Notes" },
+              { href: "/soul-notes", label: "Soul Notes" },
+              { href: "/musings", label: "Musings" },
             ].map((l) => (
               <a key={l.href} href={l.href} className="text-soft-beige/50 hover:text-soft-beige text-sm transition-colors duration-300 font-light">
                 {l.label}

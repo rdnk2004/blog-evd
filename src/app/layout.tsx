@@ -36,13 +36,14 @@ export default function RootLayout({
       lang="en"
       className={`${lora.variable} ${alexBrush.variable} antialiased scroll-smooth`}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
     >
       <body
         className="min-h-screen flex flex-col bg-background text-foreground font-serif overflow-x-hidden w-full"
         suppressHydrationWarning
       >
         <Header />
-        <main className="flex-1 w-full flex flex-col">{children}</main>
+        <main className="flex-1 w-full flex flex-col overflow-x-hidden relative">{children}</main>
         <Footer />
       </body>
     </html>

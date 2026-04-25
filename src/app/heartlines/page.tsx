@@ -40,7 +40,7 @@ export default function HeartlinesPage() {
   }, []);
 
   return (
-    <main className="flex flex-col w-full bg-[#F7F2EB] min-h-screen">
+    <main className="flex flex-col w-full bg-[#F3EDE4] min-h-screen overflow-x-hidden relative">
       
       {/* ────────────────────────────────────────────
           HERO SECTION

@@ -56,7 +56,7 @@ export default function PoemSubpage(props: { params: { slug: string } | Promise<
   const poem = getPoemBySlug(slug);
 
   return (
-    <main className="flex flex-col w-full bg-[#F3EDE4] min-h-screen">
+    <main className="flex flex-col w-full bg-[#F3EDE4] min-h-screen overflow-x-hidden relative">
       
       {/* ────────────────────────────────────────────
           READING SECTION
