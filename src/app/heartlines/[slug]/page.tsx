@@ -5,7 +5,7 @@ import Link from "next/link";
 
 // Shared dummy data representing a poem database
 const getPoemBySlug = (slug: string) => {
-  const poems: Record<string, any> = {
+  const poems: Record<string, { title: string; date: string; content: string }> = {
     "a-gentle-return-to-self": {
       title: "A Gentle Return to Self",
       date: "April 21, 2026",

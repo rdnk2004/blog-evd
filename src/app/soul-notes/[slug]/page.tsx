@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 // In a real app this might be loaded from a CMS or markdown files.
@@ -168,10 +169,12 @@ export default function NotePage() {
               if (paragraph.startsWith("[IMAGE:")) {
                 const src = paragraph.replace("[IMAGE:", "").replace("]", "");
                 return (
-                  <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll" style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}>
-                    <img 
+                  <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll relative" style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}>
+                    <Image 
                       src={`/${src}`} 
                       alt="Story illustration" 
+                      width={800}
+                      height={600}
                       className="rounded-2xl shadow-sm w-full max-w-md h-auto object-cover opacity-95 filter brightness-[0.95]"
                     />
                   </div>

@@ -166,7 +166,7 @@ export function Header() {
             onClick={() => setMenuOpen(false)}
             className="mt-6 px-8 py-3 bg-charcoal text-soft-beige text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold rounded-full hover:bg-warm-taupe transition-colors duration-300 shadow-sm hover:shadow-md"
           >
-            Subscribe to Newsletter
+            Subscribe
           </a>
         </nav>
 
@@ -179,9 +179,6 @@ export function Header() {
 }
 
 export function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
   return (
     <footer id="contact" className="relative bg-charcoal text-soft-beige overflow-hidden">
       {/* Top accent line */}
@@ -191,48 +188,29 @@ export function Footer() {
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-warm-taupe/5 rounded-full blur-[180px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-sage/5 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Newsletter strip */}
+      {/* Community strip */}
       <div className="relative border-b border-white/5 py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <span className="text-[10px] uppercase tracking-[0.3em] text-warm-taupe/60 font-semibold">
             Stay connected
           </span>
           <h2 className="font-alex text-5xl md:text-6xl mt-3 mb-3 text-soft-beige">
-            Letters from Stillness
+            Join the Community
           </h2>
           <p className="text-soft-beige/50 text-sm font-light mb-8 max-w-md mx-auto leading-relaxed">
-            Quiet words in your inbox — art, nature, and reflections, once a month.
+            Quiet words, art, nature, reflections, and announcements, shared directly with you.
           </p>
-          {subscribed ? (
-            <div className="inline-flex items-center gap-3 px-8 py-4 bg-sage/20 border border-sage/30 rounded-full text-sage text-sm">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-              Thank you — watch your inbox 🌸
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => { e.preventDefault(); if (email) setSubscribed(true); }}
-              className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                maxLength={100}
-                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-                className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 rounded-full text-soft-beige placeholder:text-soft-beige/30 text-sm focus:outline-none focus:border-warm-taupe/50 focus:bg-white/10 transition-all duration-300"
-              />
-              <button
-                type="submit"
-                className="px-8 py-3.5 bg-warm-taupe hover:bg-dusty-rose text-white text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold rounded-full transition-all duration-300 whitespace-nowrap"
-              >
-                Join the Circle
-              </button>
-            </form>
-          )}
+          <a
+            href="https://chat.whatsapp.com/J7WPIWyNN5v8AfB87D5miy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex justify-center items-center gap-3 px-8 py-3.5 bg-warm-taupe hover:bg-dusty-rose text-white text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold rounded-full transition-all duration-300 mx-auto"
+          >
+            Join on WhatsApp
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
         </div>
       </div>
 

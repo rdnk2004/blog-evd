@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
+import Link from "next/link";
 
 /* ────────────────────────────────────────────
    HERO SECTION
@@ -215,7 +216,7 @@ function JourneySection() {
 
           {/* Decorative quote */}
           <blockquote className="relative pl-5 border-l-2 border-dusty-rose/50 text-left italic text-warm-taupe text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-            "A gentle soul with a heart that feels deeply and a mind that turns moments into quiet poetry."
+            &quot;A gentle soul with a heart that feels deeply and a mind that turns moments into quiet poetry.&quot;
           </blockquote>
 
           <div className="space-y-5 text-base md:text-lg leading-relaxed text-charcoal/70 font-light max-w-2xl mx-auto">
@@ -279,7 +280,7 @@ const previewPoems = [
 
 function HeartlinesSection() {
   return (
-    <section id="heartlines" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-[#F3EDE4] relative overflow-hidden">
+    <section id="heartlines" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-[#EBE5DE] relative overflow-hidden border-t border-warm-taupe/10">
       {/* Decorative Orbs */}
       <div className="absolute top-[-10%] right-[10%] w-[40vw] h-[40vw] bg-dusty-rose/8 rounded-full blur-[140px] pointer-events-none animate-breathe" />
       <div className="absolute bottom-[-10%] left-[10%] w-[30vw] h-[30vw] bg-misty-blue/8 rounded-full blur-[100px] pointer-events-none" />
@@ -299,7 +300,7 @@ function HeartlinesSection() {
           <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
             Quiet poetry reflecting on nature, the passage of time, and the silent dialogues of the soul.
           </p>
-          <a
+          <Link
             href="/heartlines"
             className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
           >
@@ -307,13 +308,13 @@ function HeartlinesSection() {
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Poems Col */}
         <div className="md:w-2/3 grid sm:grid-cols-2 gap-6 md:gap-8 relative w-full">
            {previewPoems.map((poem, i) => (
-             <a
+             <Link
                key={i}
                href={`/heartlines/${poem.slug}`}
                className="group flex flex-col items-center text-center p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
@@ -330,7 +331,7 @@ function HeartlinesSection() {
                   Read
                   <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </div>
-             </a>
+             </Link>
            ))}
         </div>
 
@@ -353,7 +354,7 @@ function QuoteSection() {
 
       <div className="max-w-4xl mx-auto text-center reveal-on-scroll">
         <div className="font-alex text-[6rem] sm:text-[8rem] md:text-[12rem] text-warm-taupe/10 leading-none select-none" aria-hidden>
-          "
+          &quot;
         </div>
         <blockquote className="-mt-10 sm:-mt-16 md:-mt-20 font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-soft-beige/90 leading-relaxed font-light italic">
           In silence, I paint.{" "}
@@ -409,7 +410,7 @@ function JournalSection() {
           <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
             Where thoughts rest and unfold. Notes from the quiet spaces between heartbeats.
           </p>
-          <a
+          <Link
             href="/soul-notes"
             className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
           >
@@ -417,13 +418,13 @@ function JournalSection() {
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Posts Col */}
         <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 relative w-full">
            {posts.map((post, i) => (
-             <a
+             <Link
                key={i}
                href={`/soul-notes/${post.slug}`}
                className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
@@ -446,7 +447,7 @@ function JournalSection() {
                   Read More
                   <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </div>
-             </a>
+             </Link>
            ))}
         </div>
 
@@ -491,7 +492,7 @@ function MusingsSection() {
           <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
             Unstructured ideas, gentle observations, and quiet conversations with the self.
           </p>
-          <a
+          <Link
             href="/musings"
             className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
           >
@@ -499,13 +500,13 @@ function MusingsSection() {
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
-          </a>
+          </Link>
         </div>
 
         {/* Musings Col */}
         <div className="md:w-2/3 grid grid-cols-1 gap-6 md:gap-8 relative w-full max-w-xl">
            {musings.map((musing, i) => (
-             <a
+             <Link
                key={i}
                href={`/musings/${musing.slug}`}
                className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
@@ -527,7 +528,7 @@ function MusingsSection() {
                   Read
                   <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </div>
-             </a>
+             </Link>
            ))}
         </div>
 
