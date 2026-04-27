@@ -388,101 +388,68 @@ const posts = [
   }
 ];
 
-function JournalCard({
-  post,
-  index,
-}: {
-  post: (typeof posts)[0];
-  index: number;
-}) {
-  return (
-    <a href={`/soul-notes/${post.slug}`}
-      className="group cursor-pointer flex flex-col rounded-3xl overflow-hidden border border-warm-taupe/10 bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-700 hover:-translate-y-2 reveal-on-scroll"
-      style={{ transitionDelay: `${index * 0.12}s` }}
-    >
-      {/* Content */}
-      <div className="flex flex-col gap-4 p-6 sm:p-7 md:p-8 flex-1">
-        {/* Meta */}
-        <div className="flex flex-wrap items-center gap-2 text-[10px] text-warm-taupe/70 font-medium tracking-wide">
-          <span style={{ color: post.categoryColor }} className="font-bold border border-warm-taupe/20 px-2 py-0.5 rounded-full bg-warm-taupe/5">{post.tag} {post.category}</span>
-          <span className="opacity-40">·</span>
-          <span>{post.date}</span>
-          <span className="opacity-40">·</span>
-          <span>{post.readTime}</span>
-        </div>
-
-        {/* Title */}
-        <h3 className="font-serif text-2xl md:text-3xl text-charcoal group-hover:text-warm-taupe transition-colors duration-400 leading-snug font-medium">
-          {post.title}
-        </h3>
-
-        {/* Excerpt */}
-        <p className="text-sm text-charcoal/60 leading-relaxed font-light flex-1">
-          {post.excerpt}
-        </p>
-
-        {/* Read more */}
-        <div
-          className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold transition-all duration-400"
-          style={{ color: post.categoryColor }}
-        >
-          <span>Read More</span>
-          <svg
-            className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-          </svg>
-        </div>
-      </div>
-    </a>
-  );
-}
-
 function JournalSection() {
   return (
-    <section id="journal" className="w-full py-16 px-4 sm:px-6 md:py-36 bg-[#F3EDE4] relative overflow-hidden">
+    <section id="journal" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-[#F3EDE4] relative overflow-hidden">
       <div className="absolute top-[-10%] left-[-5%] w-[50vw] h-[50vw] bg-sage/8 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-5%] w-[50vw] h-[50vw] bg-misty-blue/8 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="flex flex-col items-center mb-12 md:mb-20 text-center reveal-on-scroll">
+      <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20">
+        
+        {/* Text Col */}
+        <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left reveal-on-scroll">
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-            <div className="h-px w-6 sm:w-8 md:w-14 bg-warm-taupe/40" />
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40" />
             <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-warm-taupe">Soul Notes</span>
-            <div className="h-px w-6 sm:w-8 md:w-14 bg-warm-taupe/40" />
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40 md:hidden" />
           </div>
-          <h2 className="font-alex text-5xl sm:text-7xl md:text-8xl text-charcoal mb-4 sm:mb-5 leading-tight max-w-4xl">
-            Where thoughts rest and unfold.
+          <h2 className="font-alex text-5xl sm:text-7xl text-charcoal mb-4 sm:mb-6 leading-tight">
+            Thoughts &<br/>Reflections
           </h2>
-          <p className="text-charcoal/50 font-light text-sm sm:text-base md:text-lg max-w-md leading-relaxed hidden">
-            Thoughts and reflections from the quiet spaces between heartbeats.
+          <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
+            Where thoughts rest and unfold. Notes from the quiet spaces between heartbeats.
           </p>
-        </div>
-
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {posts.map((post, i) => (
-            <JournalCard key={i} post={post} index={i} />
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12 md:mt-20 reveal-on-scroll">
           <a
             href="/soul-notes"
-            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border-2 border-charcoal text-charcoal text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-charcoal hover:text-soft-beige transition-all duration-400 shadow-sm hover:shadow-2xl transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
           >
-            Explore All Entries
+            Explore Entries
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
             </svg>
           </a>
         </div>
+
+        {/* Posts Col */}
+        <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 relative w-full">
+           {posts.map((post, i) => (
+             <a
+               key={i}
+               href={`/soul-notes/${post.slug}`}
+               className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
+               style={{ transitionDelay: `${i * 0.15}s` }}
+             >
+                <div className="flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/70 font-semibold">
+                  <span style={{ color: post.categoryColor }} className="px-2 py-0.5 rounded-full border border-warm-taupe/20 bg-white/50">
+                    {post.tag} {post.category}
+                  </span>
+                  <span className="opacity-40">·</span>
+                  <span>{post.date}</span>
+                </div>
+                <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 group-hover:text-warm-taupe transition-colors duration-300">
+                  {post.title}
+                </h3>
+                <p className="text-charcoal/70 font-light text-sm leading-loose line-clamp-4">
+                  {post.excerpt}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-dusty-rose group-hover:text-warm-taupe transition-colors duration-400">
+                  Read More
+                  <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </div>
+             </a>
+           ))}
+        </div>
+
       </div>
     </section>
   );

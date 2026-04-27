@@ -269,9 +269,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start gap-4">
             <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-1">Connect</span>
             {[
-              { href: "#", label: "Instagram", icon: "📸" },
-              { href: "#", label: "Pinterest", icon: "📌" },
-              { href: "mailto:hello@deeparam.com", label: "hello@deeparam.com", icon: "✉️" },
+              { href: "mailto:evdeepa.6@gmail.com", label: "evdeepa.6@gmail.com", icon: "✉️" },
             ].map((s) => (
               <a key={s.label} href={s.href} target={s.href.startsWith('mailto') ? undefined : "_blank"} rel="noopener noreferrer" className="flex items-center gap-2 text-soft-beige/50 hover:text-soft-beige text-sm transition-colors duration-300 font-light">
                 <span className="text-base">{s.icon}</span>
