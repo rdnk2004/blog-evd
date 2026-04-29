@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /* ────────────────────────────────────────────
    HERO SECTION
@@ -35,7 +36,7 @@ function HeroSection() {
   ];
 
   return (
-    <section className="relative w-full flex flex-col items-center justify-start pt-[140px] sm:pt-[180px] pb-24 sm:pb-32 overflow-hidden">
+    <section className="relative w-full min-h-[100svh] flex flex-col items-center justify-center pt-24 pb-20 overflow-hidden">
       {/* Bottom section transition — fades hero into the warm beige of JourneySection */}
       <div
         className="absolute bottom-0 left-0 right-0 z-[10] pointer-events-none"
@@ -85,7 +86,7 @@ function HeroSection() {
       <div
         className="absolute z-0"
         style={{
-          top: "100px",
+          top: "15%",
           right: "10%",
           width: "min(70px, 10vw)",
           height: "min(70px, 10vw)",
@@ -152,20 +153,17 @@ function HeroSection() {
         </div>
 
         {/* Category Navigation */}
-        <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-8 mt-2">
-          {[
-            "Nature",
-            "Art",
-            "Words",
-            "Silence",
-            "Soul",
-          ].map((label, i) => (
-            <div key={i} className="flex items-center gap-3 sm:gap-4 md:gap-8">
-              <span className="text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-semibold text-charcoal/60">
-                {label}
+        <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-4 sm:gap-x-5 md:gap-x-8 mt-6 max-w-[90vw]">
+          {["Nature", "✦", "Art", "✦", "Words", "✦", "Silence", "✦", "Soul"].map((item, i) => (
+            item === "✦" ? (
+              <span key={i} className="text-charcoal/30 select-none text-[8px] sm:text-[10px]">
+                {item}
               </span>
-              {i < 4 && <span className="text-charcoal/30 select-none text-[8px] sm:text-[10px]">✦</span>}
-            </div>
+            ) : (
+              <span key={i} className="text-[10px] sm:text-[11px] md:text-[12px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold text-charcoal/60">
+                {item}
+              </span>
+            )
           ))}
         </div>
       </div>
@@ -250,6 +248,68 @@ function JourneySection() {
             </a>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   ART SECTION
+   ──────────────────────────────────────────── */
+
+function ArtSection() {
+  return (
+    <section id="art-home" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-white/50 relative overflow-hidden border-t border-warm-taupe/10">
+      {/* Decorative elements */}
+      <div className="absolute top-[-10%] right-[-5%] w-[45vw] h-[45vw] bg-dusty-rose/10 rounded-full blur-[140px] pointer-events-none animate-breathe" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[45vw] h-[45vw] bg-sage/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+        
+        {/* Text Col */}
+        <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left reveal-on-scroll">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40" />
+            <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-warm-taupe">The Journey of Colors</span>
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40 md:hidden" />
+          </div>
+          <h2 className="font-alex text-5xl sm:text-7xl text-charcoal mb-4 sm:mb-6 leading-tight">
+            Art Gallery
+          </h2>
+          <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
+            A quiet passion explored through acrylics and pencil sketches. Where colors speak the silent languages of the soul.
+          </p>
+          <Link
+            href="/art"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
+          >
+            Explore Gallery
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Art Preview Images */}
+        <div className="md:w-2/3 w-full grid grid-cols-2 gap-4 sm:gap-6 relative">
+          <div className="flex flex-col gap-4 sm:gap-6 pt-8 md:pt-12 reveal-on-scroll">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/canvas-1.jpeg" alt="Lakeside in Bloom" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/face-portrait.jpeg" alt="Pencil Sketch" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 sm:gap-6 reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/kathakali-1.jpeg" alt="Kathakali Art" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/swan.jpeg" alt="Swan" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
@@ -558,6 +618,7 @@ export default function Home() {
     <div className="flex flex-col w-full overflow-x-hidden relative">
       <HeroSection />
       <JourneySection />
+      <ArtSection />
       <HeartlinesSection />
       <QuoteSection />
       <JournalSection />

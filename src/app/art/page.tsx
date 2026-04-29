@@ -92,15 +92,17 @@ export default function ArtPage() {
                 tabIndex={0}
                 className="relative group flex-1 hover:flex-[3] focus:flex-[3] lg:hover:flex-[4] lg:focus:flex-[4] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden rounded-2xl cursor-pointer shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] focus:shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white/20 outline-none"
                 style={{ 
-                  transform: "translateZ(0)", 
-                  WebkitMaskImage: "-webkit-radial-gradient(white, black)" 
+                  transform: "translateZ(0)"
                 }}
               >
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transform scale-[1.05] group-hover:scale-100 group-focus:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                  style={{ backgroundImage: `url(${item.src})` }}
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transform scale-[1.05] group-hover:scale-100 group-focus:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                 />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent group-focus:bg-transparent transition-colors duration-700" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent group-focus:bg-transparent transition-colors duration-700 pointer-events-none" />
               </div>
             ))}
           </div>
