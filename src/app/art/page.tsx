@@ -12,7 +12,7 @@ export default function ArtPage() {
     { src: ["/gallery/peonyflower.jpeg"], caption: "Elegance in layers." },
     { src: ["/gallery/fishesonpond.jpeg"], caption: "pond of colours." },
     { src: ["/gallery/shivaparvati.jpeg"], caption: "Shiva - Parvati. One Energy" },
-    { src: ["/gallery/guruvaryoorpan.jpeg"], caption: "Divine and Blue" },
+    { src: ["/gallery/guruvaryoorpan.jpeg"], caption: "Divine in Blue" },
     { src: ["/gallery/beach.jpeg"], caption: "Rhythm of the sea" }
   ];
 
@@ -44,7 +44,7 @@ export default function ArtPage() {
     <div className="flex flex-col w-full overflow-x-hidden relative min-h-screen bg-[#F7F2EB]">
       {/* Main Content */}
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-32 md:pt-40 pb-12 md:pb-20 flex flex-col items-center">
-        
+
         {/* Title & Combined Content Section */}
         <div className="text-center mb-16 md:mb-20 reveal-on-scroll">
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
@@ -55,7 +55,7 @@ export default function ArtPage() {
           <h1 className="font-alex text-6xl sm:text-7xl md:text-8xl text-charcoal leading-tight mb-8">
             Art
           </h1>
-          
+
           <div className="prose prose-sm sm:prose-base md:prose-lg prose-stone max-w-3xl mx-auto text-charcoal/70 font-light leading-relaxed space-y-6 text-left sm:text-center px-4">
             <p>
               Art has been a quiet passion of mine since childhood. Though I never had the opportunity to learn it in a formal or technical way, I continued creating in my own small, intuitive ways. As we often say, everything unfolds in its own time—and for me, that time came two years ago.
@@ -66,7 +66,7 @@ export default function ArtPage() {
             <p>
               Each phase of this journey came with its own share of challenges. It wasn’t always easy, but beyond my own efforts, Ram stood as my greatest pillar of support.
             </p>
-            
+
             <h2 className="font-serif text-3xl sm:text-4xl text-charcoal pt-10 pb-2">
               Lalit Kala Akademi, Chennai
             </h2>
@@ -79,7 +79,7 @@ export default function ArtPage() {
         {/* Expanding Accordion Gallery Section */}
         <div className="w-full relative py-8">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-dusty-rose/5 rounded-full blur-[120px] pointer-events-none" />
-          
+
           <div className="w-full max-w-6xl mx-auto h-[65vh] min-h-[450px] lg:h-[75vh] flex flex-col lg:flex-row gap-2 sm:gap-4 reveal-on-scroll px-2 sm:px-0 relative z-10">
             {[
               { src: "/gallery/lka-1.jpeg", alt: "Lalit Kala Akademi Exhibition - 1" },
@@ -87,11 +87,11 @@ export default function ArtPage() {
               { src: "/gallery/lka-3.jpeg", alt: "Lalit Kala Akademi Exhibition - 3" },
               { src: "/gallery/lka-4.jpeg", alt: "Lalit Kala Akademi Exhibition - 4" }
             ].map((item, i) => (
-              <div 
+              <div
                 key={i}
                 tabIndex={0}
                 className="relative group flex-1 hover:flex-[3] focus:flex-[3] lg:hover:flex-[4] lg:focus:flex-[4] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden rounded-2xl cursor-pointer shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] focus:shadow-[0_20px_50px_rgba(0,0,0,0.15)] bg-white/20 outline-none"
-                style={{ 
+                style={{
                   transform: "translateZ(0)"
                 }}
               >
@@ -132,14 +132,14 @@ export default function ArtPage() {
                   <div className="p-3 bg-white/60 backdrop-blur-sm rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group">
                     <div className="flex flex-col gap-2 rounded-xl overflow-hidden relative">
                       {art.src.map((src, j) => (
-                        <Image 
+                        <Image
                           key={j}
-                          src={src} 
-                          alt={art.caption} 
-                          width={1000} 
-                          height={1000} 
+                          src={src}
+                          alt={art.caption}
+                          width={1000}
+                          height={1000}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-lg" 
+                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-lg"
                         />
                       ))}
                     </div>
@@ -167,14 +167,14 @@ export default function ArtPage() {
                   <div className="p-3 bg-white/60 backdrop-blur-sm rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group">
                     <div className={`grid gap-2 rounded-xl overflow-hidden relative ${art.src.length > 1 ? 'grid-cols-2 items-center' : 'grid-cols-1'}`}>
                       {art.src.map((src, j) => (
-                        <Image 
+                        <Image
                           key={j}
-                          src={src} 
-                          alt={art.caption} 
-                          width={1000} 
-                          height={1000} 
+                          src={src}
+                          alt={art.caption}
+                          width={1000}
+                          height={1000}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-lg" 
+                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-700 ease-out rounded-lg"
                         />
                       ))}
                     </div>
