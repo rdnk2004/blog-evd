@@ -35,12 +35,12 @@ function HeroSection() {
   ];
 
   return (
-    <section className="relative w-full h-screen min-h-[500px] sm:min-h-[680px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full flex flex-col items-center justify-start pt-[140px] sm:pt-[180px] pb-24 sm:pb-32 overflow-hidden">
       {/* Bottom section transition — fades hero into the warm beige of JourneySection */}
       <div
         className="absolute bottom-0 left-0 right-0 z-[10] pointer-events-none"
         style={{
-          height: "22%",
+          height: "25%",
           background: "linear-gradient(to bottom, transparent 0%, #F7F2EB 100%)",
         }}
       />
@@ -55,15 +55,15 @@ function HeroSection() {
 
       {/* Stars */}
       {[
-        { top: "8%", left: "12%", s: "6px", d: "0s" },
-        { top: "12%", left: "30%", s: "4px", d: "0.5s" },
-        { top: "6%", left: "55%", s: "5px", d: "1.1s" },
-        { top: "10%", left: "72%", s: "3px", d: "0.3s" },
-        { top: "5%", left: "85%", s: "6px", d: "1.4s" },
-        { top: "16%", left: "92%", s: "4px", d: "0.8s" },
-        { top: "18%", left: "18%", s: "3px", d: "1.7s" },
-        { top: "22%", left: "45%", s: "4px", d: "2.1s" },
-        { top: "14%", left: "62%", s: "5px", d: "0.6s" },
+        { top: "15%", left: "12%", s: "6px", d: "0s" },
+        { top: "25%", left: "30%", s: "4px", d: "0.5s" },
+        { top: "18%", left: "55%", s: "5px", d: "1.1s" },
+        { top: "22%", left: "72%", s: "3px", d: "0.3s" },
+        { top: "12%", left: "85%", s: "6px", d: "1.4s" },
+        { top: "28%", left: "92%", s: "4px", d: "0.8s" },
+        { top: "35%", left: "18%", s: "3px", d: "1.7s" },
+        { top: "40%", left: "45%", s: "4px", d: "2.1s" },
+        { top: "30%", left: "62%", s: "5px", d: "0.6s" },
       ].map((star, i) => (
         <div
           key={i}
@@ -85,8 +85,8 @@ function HeroSection() {
       <div
         className="absolute z-0"
         style={{
-          top: "8%",
-          right: "15%",
+          top: "100px",
+          right: "10%",
           width: "min(70px, 10vw)",
           height: "min(70px, 10vw)",
           filter: "drop-shadow(0 0 15px rgba(255,255,230,0.8)) drop-shadow(0 0 50px rgba(255,250,200,0.4))",
@@ -121,7 +121,7 @@ function HeroSection() {
 
       {/* Hero text content */}
       <div
-        className="relative z-20 text-center flex flex-col items-center px-4 sm:px-6 mt-[-10vh] sm:mt-[-12vh] md:mt-[-18vh]"
+        className="relative z-20 text-center flex flex-col items-center px-4 sm:px-6"
         style={{ maxWidth: "960px", margin: "0 auto" }}
       >
         {/* Eyebrow */}
@@ -154,20 +154,16 @@ function HeroSection() {
         {/* Category Navigation */}
         <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-8 mt-2">
           {[
-            { label: "Nature", href: "#nature" },
-            { label: "Art", href: "#art" },
-            { label: "Words", href: "#words" },
-            { label: "Silence", href: "#silence" },
-            { label: "Soul", href: "#soul" },
-          ].map((item, i) => (
+            "Nature",
+            "Art",
+            "Words",
+            "Silence",
+            "Soul",
+          ].map((label, i) => (
             <div key={i} className="flex items-center gap-3 sm:gap-4 md:gap-8">
-              <a
-                href={item.href}
-                className="text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-semibold text-charcoal/60 hover:text-charcoal transition-all duration-300 relative group"
-              >
-                <span className="relative z-10">{item.label}</span>
-                <span className="absolute -bottom-1 sm:-bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-charcoal/40 group-hover:w-full transition-all duration-500"></span>
-              </a>
+              <span className="text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.3em] font-semibold text-charcoal/60">
+                {label}
+              </span>
               {i < 4 && <span className="text-charcoal/30 select-none text-[8px] sm:text-[10px]">✦</span>}
             </div>
           ))}

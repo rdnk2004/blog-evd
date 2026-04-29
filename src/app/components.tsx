@@ -64,6 +64,7 @@ export function Header() {
     { href: "/heartlines", label: "Heartlines" },
     { href: "/soul-notes", label: "Soul Notes" },
     { href: "/musings", label: "Musings" },
+    { href: "/art", label: "Art" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -152,7 +153,6 @@ export function Header() {
               onClick={() => setMenuOpen(false)}
               className="font-alex text-4xl sm:text-5xl text-charcoal/80 hover:text-charcoal transition-all duration-300 hover:tracking-wider"
               style={{
-                transitionDelay: menuOpen ? `${i * 60}ms` : "0ms",
                 transform: menuOpen ? "translateY(0)" : "translateY(20px)",
                 opacity: menuOpen ? 1 : 0,
                 transition: `transform 0.5s ease ${i * 60}ms, opacity 0.5s ease ${i * 60}ms, letter-spacing 0.3s ease`,
@@ -237,6 +237,7 @@ export function Footer() {
               { href: "/heartlines", label: "Heartlines" },
               { href: "/soul-notes", label: "Soul Notes" },
               { href: "/musings", label: "Musings" },
+              { href: "/art", label: "Art" },
             ].map((l) => (
               <a key={l.href} href={l.href} className="text-soft-beige/50 hover:text-soft-beige text-sm transition-colors duration-300 font-light">
                 {l.label}
