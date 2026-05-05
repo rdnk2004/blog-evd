@@ -433,6 +433,16 @@ function QuoteSection() {
 
 const posts = [
   {
+    title: "The Departure of a Soul…",
+    date: "May 5, 2026",
+    readTime: "3 min read",
+    category: "Soul",
+    categoryColor: "#A8B5A1",
+    slug: "the-departure-of-a-soul",
+    excerpt: "As the Bhagavad Gita says, there is no death for the soul… the soul may take another attire, not the form we knew. That was the first time she had truly witnessed a soul departing in such a manner...",
+    tag: "🕊️",
+  },
+  {
     title: "The Mother’s Silent Answer",
     date: "October 18, 2025",
     readTime: "3 min read",

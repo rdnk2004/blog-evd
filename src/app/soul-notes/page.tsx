@@ -5,6 +5,14 @@ import Link from "next/link";
 
 const notes = [
   {
+    title: "The Departure of a Soul…",
+    snippet: "As the Bhagavad Gita says, there is no death for the soul… the soul may take another attire, not the form we knew. That was the first time she had truly witnessed a soul departing in such a manner...",
+    slug: "the-departure-of-a-soul",
+    date: "May 5, 2026",
+    category: "Soul",
+    readTime: "3 min read"
+  },
+  {
     title: "The Mother’s Silent Answer",
     snippet: "There is a belief often heard among devotees—that one reaches Tirumala Venkateswara Temple only when Venkateswara calls. It is not a place one simply decides to visit...",
     slug: "the-mothers-silent-answer",
