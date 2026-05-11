@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { Header, Footer } from "./components";
+import { Analytics } from "@vercel/analytics/next";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -45,6 +46,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 w-full flex flex-col overflow-x-hidden relative">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
