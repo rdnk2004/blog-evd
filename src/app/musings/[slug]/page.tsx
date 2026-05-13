@@ -117,8 +117,6 @@ export default function MusingPage() {
             </Link>
 
             <div className="flex items-center justify-center gap-2 mb-6 md:mb-8 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold">
-              <span className="px-3 py-1 rounded-full border border-warm-taupe/20 bg-warm-taupe/5">{musing.category}</span>
-              <span className="opacity-40">·</span>
               <span>{musing.date}</span>
               <span className="opacity-40">·</span>
               <span>{musing.readTime}</span>

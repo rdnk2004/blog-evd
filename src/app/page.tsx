@@ -433,6 +433,16 @@ function QuoteSection() {
 
 const posts = [
   {
+    title: "When Silence Spoke Love",
+    date: "May 13, 2026",
+    readTime: "3 min read",
+    category: "Soul",
+    categoryColor: "#A6B6C8",
+    slug: "when-silence-spoke-love",
+    excerpt: "What began with glances and a handmade card slowly grew into something far stronger than either of them could have imagined .... a journey of two worlds learning to become one.",
+    tag: "💌",
+  },
+  {
     title: "The Departure of a Soul…",
     date: "May 5, 2026",
     readTime: "3 min read",
@@ -442,17 +452,6 @@ const posts = [
     excerpt: "As the Bhagavad Gita says, there is no death for the soul… the soul may take another attire, not the form we knew. That was the first time she had truly witnessed a soul departing in such a manner...",
     tag: "🕊️",
   },
-  {
-    title: "The Mother’s Silent Answer",
-    date: "October 18, 2025",
-    readTime: "3 min read",
-    category: "Soul",
-    categoryColor: "#D8B4A8",
-    slug: "the-mothers-silent-answer",
-    excerpt:
-      "There is a belief often heard among devotees—that one reaches Tirumala Venkateswara Temple only when Venkateswara calls. It is not a place one simply decides to visit. It is a journey that unfolds when the divine wills it.",
-    tag: "🌸",
-  }
 ];
 
 function JournalSection() {
@@ -497,10 +496,6 @@ function JournalSection() {
                style={{ transitionDelay: `${i * 0.15}s` }}
              >
                 <div className="flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/70 font-semibold">
-                  <span style={{ color: post.categoryColor }} className="px-2 py-0.5 rounded-full border border-warm-taupe/20 bg-white/50">
-                    {post.tag} {post.category}
-                  </span>
-                  <span className="opacity-40">·</span>
                   <span>{post.date}</span>
                 </div>
                 <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 group-hover:text-warm-taupe transition-colors duration-300">

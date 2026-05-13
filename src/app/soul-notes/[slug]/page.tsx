@@ -13,7 +13,7 @@ const notesData: Record<string, { title: string; date: string; category: string;
     readTime: "3 min read",
     content: [
       "As the Bhagavad Gita says, there is no death for the soul… the soul may take another attire, not the form we knew.",
-      "That was the first time she had truly witnessed a soul departing in such a manner..as she had heard people speak of, read in scriptures, or seen on screens. She had known this person since her childhood, a frequent visitor to her neighbour’s home. As life would have it, she later became a part of his family. But her understanding of him changed gradually as he moved into old age.",
+      "That was the first time she had truly witnessed a soul departing in such a manner..as she had heard people speak of, read in scriptures, or seen on screens. She had known this person since her childhood, a frequent visitor to her neighbour’s home. As life would have it, [she later became a part of his family.](/soul-notes/when-silence-spoke-love) But her understanding of him changed gradually as he moved into old age.",
       "Like every human being, he had his own flaws and values. In her childhood, she saw him with a sense of fear. Being the elder of a large family, he was dominant, short-tempered, and people around him treated him with due respect. That was her perception of him at that age.",
       "Years later, when she realized that the next phase of her life would be within his family, the fear dissolved. In its place grew respect and an affection for a new relationship. The family included his wife, sons, a daughter, a son-in-law, and granddaughters. He was no longer the same person. She began to see his softer side within the family as age shaped him, though he remained adamant and self-confident.",
       "Like any family, there were differences of opinion among them, moments of disagreement, but he always stood firm in his views. She was happy to be one among them, for the bond they shared with each other. She hardly had any detailed conversations with him, other than the usual gentle formalities of family life.",
@@ -120,6 +120,40 @@ const notesData: Record<string, { title: string; date: string; category: string;
       "I was given something far greater—",
       "a silent assurance that the Mother was always listening. 🌸"
     ]
+  },
+  "when-silence-spoke-love": {
+    title: "When Silence Spoke Love",
+    date: "May 13, 2026",
+    category: "Soul",
+    readTime: "3 min read",
+    content: [
+      "How She Became a Part of His Family.....",
+      "(Reference: [Departure of a Soul](/soul-notes/the-departure-of-a-soul))",
+      "Unfolding the events that led her to become the elder son’s wife…",
+      "A journey that, perhaps, began long before they even knew it — when their paths quietly crossed in childhood. Then, as time unfolded, destiny brought them closer once again in 1994…",
+      "For his job, he had to stay miles away from his home, in a relative’s house. They were just neighbours then… unaware that life was slowly weaving their paths together.",
+      "She was just fourteen , standing at the tender edge of girlhood  and he was twenty-two, already stepping into the responsibilities of adulthood. Their story did not begin with grand declarations or dramatic confessions. It began quietly .. with stolen glances, lingering smiles, and conversations carried in silence.",
+      "For months, their eyes spoke a language only they understood. A look that lasted a second longer than it should. A shy smile that returned again and again. Yet he never allowed himself to assume. He waited… unsure, hopeful, patient.",
+      "Then came 24th July 1994.",
+      "On his star birthday, she placed in his hands a small, carefully made birthday card. It was simple, handmade, perhaps imperfect ... just a gentle wish saying, “Happy Birthday.” Yet it carried the courage of a young heart expressing what words could not. In that fragile piece of paper, he found his answer.",
+      "What began with glances and a handmade card slowly grew into something far stronger than either of them could have imagined .... a journey of two worlds learning to become one.",
+      "Though nothing was openly spoken, they were both quietly certain about their future. She remained focused on her studies, and he on his work. He waited patiently until she completed her graduation.",
+      "Though she excelled in academics, she knew where she wished to pause. She valued the eight long years he had waited for her, and in her own way, chose a life where love mattered more than achievement. She always preferred to stand a step below him in everything ...not out of weakness, but out of love, respect, and the joy she found in his presence. And he valued that deeply.",
+      "They were equally firm about one thing , that their families would come to know about their relationship only through them. And so it happened.",
+      "And on 13th May 2001, they found themselves walking the same path.... not by chance, but by something deeper, something destined, with the blessings of both families.",
+      "She was a single child, her world small and carefully held. Her days revolved around a close circle, familiar and intimate. But when she stepped into his life, she embraced his big, bustling family with wonder. She cherished every voice, every gathering, every small detail that belonged to him. His world became her treasure.",
+      "And he... with a heart generous and steady , learned to fit gently into her smaller world. He adjusted without complaint, understanding that love is not about space, but about presence.",
+      "They were young ,  perhaps too young to fully understand the meaning of family life, responsibilities, and the storms time would eventually bring. But even in that innocence, they were certain of something profound. Their trust was real. Their love was sincere. And their bond, though quietly formed, was deep.",
+      "With each passing year, her love for him only grew stronger…",
+      "And his unwavering trust in her became the foundation that held through everything.",
+      "Together, they did not merely walk through time…",
+      "They built a bond that deepened, strengthened, and blossomed with every moment they shared.",
+      "What began in silence grew into a lifetime of love.... one that would be tested by time, strengthened by trials, and held together by an unspoken, unwavering bond.",
+      "And today, they step into the twenty-fifth year of that beautiful journey together , along with their two sons, who became the living reflection of the love they built through the years.",
+      "Some relationships enter life quietly… and slowly become the very foundation of one’s existence.",
+      "Perhaps theirs was always meant to be one such bond ...not merely lived, but destined.",
+      "DeepaRam❣️"
+    ]
   }
 };
 
@@ -179,8 +213,6 @@ export default function NotePage() {
             </Link>
 
             <div className="flex items-center justify-center gap-2 mb-6 md:mb-8 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold">
-              <span className="px-3 py-1 rounded-full border border-warm-taupe/20 bg-warm-taupe/5">{note.category}</span>
-              <span className="opacity-40">·</span>
               <span>{note.date}</span>
               <span className="opacity-40">·</span>
               <span>{note.readTime}</span>
@@ -219,6 +251,24 @@ export default function NotePage() {
                                      paragraph === "Mother, why did that thought come to me yesterday? Why did I lose it?" ||
                                      paragraph === "Will I find an earring before I leave this place?";
                                      
+              const linkRegex = /\[(.*?)\]\((.*?)\)/g;
+              const hasLink = linkRegex.test(paragraph);
+
+              let content: any = paragraph;
+              if (hasLink) {
+                const elements = [];
+                let lastIndex = 0;
+                let match;
+                linkRegex.lastIndex = 0;
+                while ((match = linkRegex.exec(paragraph)) !== null) {
+                  elements.push(paragraph.substring(lastIndex, match.index));
+                  elements.push(<Link key={match.index} href={match[2]} className="text-warm-taupe hover:text-charcoal underline transition-colors">{match[1]}</Link>);
+                  lastIndex = linkRegex.lastIndex;
+                }
+                elements.push(paragraph.substring(lastIndex));
+                content = elements;
+              }
+
               return (
                 <p 
                   key={index} 
@@ -228,7 +278,7 @@ export default function NotePage() {
                   `}
                   style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}
                 >
-                  {paragraph}
+                  {content}
                 </p>
               );
             })}

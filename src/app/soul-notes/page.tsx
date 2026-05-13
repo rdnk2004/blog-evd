@@ -5,6 +5,14 @@ import Link from "next/link";
 
 const notes = [
   {
+    title: "When Silence Spoke Love",
+    snippet: "What began with glances and a handmade card slowly grew into something far stronger than either of them could have imagined .... a journey of two worlds learning to become one.",
+    slug: "when-silence-spoke-love",
+    date: "May 13, 2026",
+    category: "Soul",
+    readTime: "3 min read"
+  },
+  {
     title: "The Departure of a Soul…",
     snippet: "As the Bhagavad Gita says, there is no death for the soul… the soul may take another attire, not the form we knew. That was the first time she had truly witnessed a soul departing in such a manner...",
     slug: "the-departure-of-a-soul",
@@ -91,8 +99,6 @@ export default function SoulNotesPage() {
                 <div className="flex flex-col items-start flex-1 w-full relative">
                   
                   <div className="flex flex-wrap items-center gap-2 mb-5 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold">
-                    <span className="px-3 py-1.5 rounded-full border border-warm-taupe/20 bg-white/50">{note.category}</span>
-                    <span className="opacity-40">·</span>
                     <span>{note.date}</span>
                     <span className="opacity-40 hidden sm:inline">·</span>
                     <span className="hidden sm:inline">{note.readTime}</span>
