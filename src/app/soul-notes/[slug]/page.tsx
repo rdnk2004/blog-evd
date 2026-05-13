@@ -136,6 +136,7 @@ const notesData: Record<string, { title: string; date: string; category: string;
       "For months, their eyes spoke a language only they understood. A look that lasted a second longer than it should. A shy smile that returned again and again. Yet he never allowed himself to assume. He waited… unsure, hopeful, patient.",
       "Then came 24th July 1994.",
       "On his star birthday, she placed in his hands a small, carefully made birthday card. It was simple, handmade, perhaps imperfect ... just a gentle wish saying, “Happy Birthday.” Yet it carried the courage of a young heart expressing what words could not. In that fragile piece of paper, he found his answer.",
+      "[IMAGE:birthdayletter.jpeg]",
       "What began with glances and a handmade card slowly grew into something far stronger than either of them could have imagined .... a journey of two worlds learning to become one.",
       "Though nothing was openly spoken, they were both quietly certain about their future. She remained focused on her studies, and he on his work. He waited patiently until she completed her graduation.",
       "Though she excelled in academics, she knew where she wished to pause. She valued the eight long years he had waited for her, and in her own way, chose a life where love mattered more than achievement. She always preferred to stand a step below him in everything ...not out of weakness, but out of love, respect, and the joy she found in his presence. And he valued that deeply.",
