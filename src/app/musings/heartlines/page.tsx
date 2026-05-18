@@ -25,6 +25,7 @@ const poems = [
 export default function HeartlinesPage() {
   // IntersectionObserver for scroll reveals
   useEffect(() => {
+    window.scrollTo(0, 0);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -89,7 +90,7 @@ export default function HeartlinesPage() {
            {poems.map((poem, i) => (
              <Link
                key={i}
-               href={`/heartlines/${poem.slug}`}
+               href={`/musings/heartlines/${poem.slug}`}
                className="group flex flex-col items-center text-center p-8 sm:p-12 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
                style={{ transitionDelay: `${(i % 2 === 0 ? 0 : 0.15)}s` }}
              >

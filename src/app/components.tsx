@@ -61,7 +61,7 @@ export function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/#journey", label: "About Me" },
-    { href: "/heartlines", label: "Heartlines" },
+    { href: "/series", label: "Series" },
     { href: "/soul-notes", label: "Soul Notes" },
     { href: "/musings", label: "Musings" },
     { href: "/art", label: "Art" },
@@ -234,7 +234,7 @@ export function Footer() {
             {[
               { href: "/", label: "Home" },
               { href: "/#journey", label: "About Me" },
-              { href: "/heartlines", label: "Heartlines" },
+              { href: "/series", label: "Series" },
               { href: "/soul-notes", label: "Soul Notes" },
               { href: "/musings", label: "Musings" },
               { href: "/art", label: "Art" },

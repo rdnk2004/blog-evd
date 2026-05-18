@@ -164,6 +164,7 @@ export default function NotePage() {
   const note = notesData[slug];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

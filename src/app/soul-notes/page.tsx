@@ -33,6 +33,7 @@ const notes = [
 export default function SoulNotesPage() {
   // IntersectionObserver for scroll reveals
   useEffect(() => {
+    window.scrollTo(0, 0);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

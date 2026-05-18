@@ -37,6 +37,7 @@ export default function PoemSubpage(props: { params: { slug: string } | Promise<
 
   useEffect(() => {
     if (!slug) return;
+    window.scrollTo(0, 0);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -69,7 +70,7 @@ export default function PoemSubpage(props: { params: { slug: string } | Promise<
 
         <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center reveal-on-scroll">
           <Link
-            href="/heartlines"
+            href="/musings/heartlines"
             className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe hover:text-charcoal transition-colors duration-300 mb-12 sm:mb-16"
           >
             <span className="transform -translate-x-0 hover:-translate-x-1 transition-transform duration-300">←</span>

@@ -67,6 +67,7 @@ export default function MusingPage() {
   const musing = musingsData[slug];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
