@@ -84,7 +84,7 @@ be yours.`
 };
 
 export default function ChapterSubpage(props: { params: { slug: string, chapterSlug: string } | Promise<{ slug: string, chapterSlug: string }> }) {
-  const [slugs, setSlugs] = useState<{slug: string, chapterSlug: string} | null>(null);
+  const [slugs, setSlugs] = useState<{ slug: string, chapterSlug: string } | null>(null);
 
   useEffect(() => {
     Promise.resolve(props.params).then((resolved) => {
@@ -95,7 +95,7 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
   useEffect(() => {
     if (!slugs) return;
     window.scrollTo(0, 0); // Reset scroll position to top when page loads
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -106,12 +106,12 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
       },
       { threshold: 0.1, rootMargin: "0px 0px -20px 0px" } // Less aggressive rootMargin for better text revealing
     );
-    
+
     // Give DOM a small tick to render the dynamic content before observing
     setTimeout(() => {
       document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el));
     }, 50);
-    
+
     return () => observer.disconnect();
   }, [slugs]);
 
@@ -132,10 +132,10 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
 
   return (
     <main className="flex flex-col w-full bg-[#F3EDE4] min-h-screen overflow-x-hidden relative">
-      
+
       {/* READING SECTION */}
       <section className="relative w-full pt-40 pb-32 px-4 sm:px-6 flex flex-col items-center min-h-[80vh]">
-        
+
         {/* Ambient Glow */}
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-dusty-rose/10 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-sage/10 rounded-full blur-[150px] pointer-events-none" />
@@ -150,8 +150,8 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
           </Link>
 
           <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-6">{chapter.date}</span>
-          
-          <h1 className="font-serif text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] leading-[1.1] text-charcoal mb-8 sm:mb-12" style={{textShadow: "0 4px 20px rgba(0,0,0,0.03)"}}>
+
+          <h1 className="font-serif text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] leading-[1.1] text-charcoal mb-8 sm:mb-12" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.03)" }}>
             {chapter.title}
           </h1>
 
@@ -162,10 +162,10 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             {chapter.content.split('\n\n').map((paragraph: string, index: number) => {
               // Some custom styling for short impact lines if needed
               const isShortImpact = paragraph.length < 50 && paragraph.includes('…');
-              
+
               return (
-                <p 
-                  key={index} 
+                <p
+                  key={index}
                   className={`mb-8 sm:mb-12 font-serif font-light text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] leading-[2.1] sm:leading-[2.5] text-left whitespace-pre-line tracking-wide reveal-on-scroll transition-all duration-700
                     ${isShortImpact ? 'text-charcoal' : 'text-charcoal/90'}
                   `}
@@ -180,13 +180,13 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
           {/* Footer Signature */}
           <div className="w-12 h-px bg-warm-taupe/30 mt-20 sm:mt-24 mb-6 reveal-on-scroll" />
           <span className="font-alex text-2xl sm:text-3xl text-warm-taupe/60 reveal-on-scroll">~ DeepaRam 🌙</span>
-          
+
           {/* Next Chapter Info */}
           <div className="mt-24 md:mt-32 pt-12 border-t border-warm-taupe/10 w-full flex flex-col items-center text-center reveal-on-scroll">
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
             <div className="flex flex-col items-center">
               <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4">
-                A sleepless night between choices
+                When Destiny Chose The Hour
               </h3>
               <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                 Coming Soon
