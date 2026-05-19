@@ -95,7 +95,7 @@ So we surrendered to the doctor’s decision.
 
 Destiny chose the hour.
 
-The time was fixed for the next day — 4 p.m., July 6.
+The time was fixed for the next day — 4 p.m., July 6, 2004. 
 
 And there I was.
 The day began with the usual preparations. Ram stood beside me, my parents were there, and a few close relatives had gathered around.
