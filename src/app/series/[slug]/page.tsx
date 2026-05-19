@@ -15,6 +15,14 @@ const getSeriesData = (slug: string) => {
           date: "May 18, 2026",
           readTime: "2 min read",
           snippet: "The beginning of the journey...",
+        },
+        {
+          chapterLabel: "Chapter 1",
+          title: "When Destiny Chose The Hour",
+          slug: "chapter-1",
+          date: "May 19, 2026",
+          readTime: "3 min read",
+          snippet: "We began our journey together after eight long years of anticipation...",
         }
       ]
     }
@@ -114,6 +122,12 @@ export default function SeriesSubpage(props: { params: { slug: string } | Promis
             >
               <div className="flex flex-col items-start flex-1 w-full relative">
                 <div className="flex flex-wrap items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold">
+                  {chapter.chapterLabel && (
+                    <>
+                      <span className="text-charcoal/70">{chapter.chapterLabel}</span>
+                      <span className="opacity-40">·</span>
+                    </>
+                  )}
                   <span>{chapter.date}</span>
                   <span className="opacity-40">·</span>
                   <span>{chapter.readTime}</span>
