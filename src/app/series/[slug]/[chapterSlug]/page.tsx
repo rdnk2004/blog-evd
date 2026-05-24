@@ -129,6 +129,55 @@ It had only just begun ….
 A night that would remain unforgettable,
 carrying within it lessons of faith, strength,
 and the unseen grace that walks with us through life.`
+      },
+      "chapter-2": {
+        chapterLabel: "Chapter 2",
+        title: "The Beginning of Sleepless Nights",
+        date: "May 24, 2026",
+        content: `In the midst of the post-delivery procedures, I drifted into a brief, unaware sleep, completely oblivious to the storm that was quietly unfolding around me.
+
+When I slowly opened my eyes, something felt different. The warmth that had filled the room earlier was gone. The faces around me no longer carried joy. Instead, there was confusion, shock, and eyes heavy with unspoken tears.
+
+As my body slowly began to awaken from the fading anaesthesia, my body was weak, my mind still clouded. Yet somewhere deep within, a quiet fear began to rise ..a feeling that something was not right.
+
+The room felt different now. Soft voices moved in hushed tones, and hurried footsteps echoed with urgency. There was a tension I could not understand, but I could feel it in every corner of the space around me.
+
+It was then that Ram came near me.
+He spoke gently, trying to remain calm, but I could sense the tremble beneath his words. He told me that the baby had a small issue ….. something that needed immediate attention. The baby had to be shifted to another hospital without delay.
+
+In that moment, everything seemed to move all at once.
+Nurses rushed about, making quick arrangements, carefully preparing the newborn for transfer. The room that had once held happiness and celebration was now overtaken by urgency and fear.
+
+In the rush and urgency to transfer the baby, they had missed bringing him to me. I was still unaware of how serious the situation truly was.
+
+I wanted to speak, but my voice felt lost within me.
+Gathering every ounce of strength I had, I made one simple request to see my baby.
+For a brief moment, time seemed to pause.
+A nurse walked towards me, holding a small bundle in her arms. Only his tiny face was visible.
+Just a glimpse.
+That was all I was given.
+Though I longed to touch those soft pink cheeks, in that moment, I could not even lift my hand.
+Just a few seconds… and before my heart could fully absorb that fleeting moment, he was gone ….. carried away into the unknown.
+And there I lay…
+Helpless.
+The pain I felt was far deeper than any physical suffering. It was a silent ache that spread through every part of my being, leaving me empty in a way I had never known before.
+
+That night became the beginning of countless sleepless hours. I lay there, a mother filled with waiting, longing, and silent prayers, holding on to nothing but the memory of a fleeting glimpse of my child.
+And as they carried him away into the unknown, I did not realize then… that this was not just a moment of separation, but the quiet beginning of a journey that would change our lives forever.
+
+I remained confined to that hospital bed, surrounded by my parents and a few kind souls.
+Yet, despite their presence, I felt utterly alone.
+
+Frozen in a silence I could not understand, it seemed as though fate had gently blindfolded me. Something was happening .. I could sense it. The hurried movements, the hushed conversations, the worried faces all whispered a truth that remained hidden from me.
+
+Why this silence?
+Why this distance?
+Why did no one speak?
+The questions echoed through my mind, unanswered.
+
+That night stretched endlessly .. a sleepless wait where every passing moment felt unbearably heavy. I held on to nothing but uncertainty, clinging to silent prayers and the hope of hearing something, anything, about my child.
+
+All the while, somewhere beyond those hospital walls, Ram was following our son into the unknown, unaware of what awaited him next.`
       }
     }
   };
@@ -193,31 +242,33 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-dusty-rose/10 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-sage/10 rounded-full blur-[150px] pointer-events-none" />
 
-        <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center reveal-on-scroll">
-          <Link
-            href={`/series/${slugs.slug}`}
-            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe hover:text-charcoal transition-colors duration-300 mb-12 sm:mb-16"
-          >
-            <span className="transform -translate-x-0 hover:-translate-x-1 transition-transform duration-300">←</span>
-            Back to Chapters
-          </Link>
+        <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center">
+          <header className="w-full flex flex-col items-center reveal-on-scroll">
+            <Link
+              href={`/series/${slugs.slug}`}
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe hover:text-charcoal transition-colors duration-300 mb-12 sm:mb-16"
+            >
+              <span className="transform -translate-x-0 hover:-translate-x-1 transition-transform duration-300">←</span>
+              Back to Chapters
+            </Link>
 
-          <div className="flex flex-col items-center mb-6">
-            {chapter.chapterLabel && (
-              <span className="text-[12px] sm:text-sm uppercase tracking-[0.3em] text-warm-taupe mb-3 font-medium">
-                {chapter.chapterLabel}
+            <div className="flex flex-col items-center mb-6">
+              {chapter.chapterLabel && (
+                <span className="text-[12px] sm:text-sm uppercase tracking-[0.3em] text-warm-taupe mb-3 font-medium">
+                  {chapter.chapterLabel}
+                </span>
+              )}
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold">
+                {chapter.date}
               </span>
-            )}
-            <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold">
-              {chapter.date}
-            </span>
-          </div>
+            </div>
 
-          <h1 className="font-serif text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] leading-[1.1] text-charcoal mb-8 sm:mb-12" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.03)" }}>
-            {chapter.title}
-          </h1>
+            <h1 className="font-serif text-[2.5rem] sm:text-[4rem] md:text-[5.5rem] leading-[1.1] text-charcoal mb-8 sm:mb-12" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.03)" }}>
+              {chapter.title}
+            </h1>
 
-          <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+            <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+          </header>
 
           {/* Chapter Content */}
           <div className="w-full text-charcoal/85">
@@ -258,6 +309,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-2" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-1`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 1</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    When Destiny Chose The Hour
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -279,10 +344,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-1" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 2</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-2`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 2</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Beginning of Sleepless Nights
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-2" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <div className="flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 3</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                    When Faith Took its First Breath
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon

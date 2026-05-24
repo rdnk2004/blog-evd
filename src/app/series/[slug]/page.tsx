@@ -23,6 +23,14 @@ const getSeriesData = (slug: string) => {
           date: "May 19, 2026",
           readTime: "3 min read",
           snippet: "We began our journey together after eight long years of anticipation...",
+        },
+        {
+          chapterLabel: "Chapter 2",
+          title: "The Beginning of Sleepless Nights",
+          slug: "chapter-2",
+          date: "May 24, 2026",
+          readTime: "3 min read",
+          snippet: "In the midst of the post-delivery procedures, I drifted into a brief sleep, oblivious to the storm quietly unfolding around me...",
         }
       ]
     }
