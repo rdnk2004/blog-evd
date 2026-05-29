@@ -178,11 +178,188 @@ The questions echoed through my mind, unanswered.
 That night stretched endlessly .. a sleepless wait where every passing moment felt unbearably heavy. I held on to nothing but uncertainty, clinging to silent prayers and the hope of hearing something, anything, about my child.
 
 All the while, somewhere beyond those hospital walls, Ram was following our son into the unknown, unaware of what awaited him next.`
+      },
+      "chapter-3": {
+        chapterLabel: "Chapter 3",
+        title: "When Faith Took Its First Breath",
+        date: "May 29, 2026",
+        content: `The next few hours of that night…they unfolded in a way
+I did not witness myself.
+
+I know them only through Ram’s perspective…
+yet I have lived them a thousand times within me.
+
+Those hours…they did not pass like time.
+They settled quietly into our lives, becoming
+the turning point of our journey.
+
+So it all started like this…
+
+After the C-section,the gynaecologist noticed
+a small, unusual sign.
+
+The baby looked perfect in every visible way …
+pink, healthy, weighing three kilos,with thick, beautiful hair.
+
+And yet…
+there was something unsettling.
+
+A quiet alarm.
+
+The baby was frothing from the mouth.
+
+They cleaned him gently, and for a brief moment,
+he was shown to the anxious faces waiting outside…
+
+But concern lingered.
+
+The doctor called her friend ,a paediatrician …
+for a closer examination.
+
+And then…
+came the moment that changed everything.
+
+While joy still floated outside that room,
+Ram and my parents were called in.
+
+What followed…
+cannot truly be held within words.
+
+A diagnosis was spoken …distant, unfamiliar,
+like a language never meant for us.
+
+TEF — Tracheoesophageal Fistula.
+
+A rare congenital condition.
+
+In those days,  when the world
+was not yet at our fingertips,
+such words felt like Greek and Latin …
+heavy, incomprehensible… frightening.
+
+The explanation came slowly.
+
+A hand-drawn sketch…of a tiny body,
+so delicate, so new yet marked
+by an unseen complication.
+
+An abnormal connection between the oesophagus
+and the trachea.A condition that could steal breath…
+that could turn feeding into danger.
+
+A condition that demanded
+immediate surgery.
+
+And then…came the words that echoed louder
+than everything else:
+
+“Fifty… fifty chance of survival.”
+
+Fifty percent hope.
+Fifty percent fear.
+
+In that single moment, joy dissolved into shock.
+
+Ram…
+my parents…
+stood there listening , yet unable
+to fully understand.
+
+Because some truths are too heavy
+for the mind to hold all at once.
+
+Almost immediately…
+the baby was taken away ,placed in an ambulance,
+accompanied by a nurse, Ram,and few cousins.
+
+What a birth it was…
+
+So blessed …
+yet so intensely tested.
+
+Every moment carefully scripted.
+Every person placed with purpose.
+
+There was no delay.
+No time to hesitate.
+
+Help arrived through people who stood like pillars
+in the middle of that unexpected storm.
+
+And Ram…
+
+Though shattered within,he stood steady
+on the outside.
+
+Because in that moment, he had no choice.
+
+He could not afford to fall.
+
+He had to decide.
+He had to believe.
+
+He had to carry all of us…
+through the unknown.
+
+And in that moment of uncertainty…
+*faith took its first breath.*`,
+        gratitude: {
+          title: "Gratefully Remembered",
+          subtitle: "With heartfelt gratitude to:",
+          items: [
+            {
+              name: "Dr. Silambuchelvi",
+              role: "the gynaecologist, for taking the right decision at the right time."
+            },
+            {
+              name: "All the nurses",
+              role: "who assisted during those critical moments."
+            },
+            {
+              name: "Dr. Srikanth",
+              role: "the paediatrician, for the timely and accurate diagnosis."
+            },
+            {
+              name: "Ram’s cousins — Chandru, Babu, Rajesh, and Rajan",
+              role: "for accompanying and supporting Ram through those difficult hours."
+            },
+            {
+              name: "My co-sister’s mother and her brother Anil",
+              role: "for staying beside me and my parents throughout that long and uncertain night."
+            }
+          ]
+        }
       }
     }
   };
 
   return data[seriesSlug]?.[chapterSlug];
+};
+
+const renderFormattedText = (text: string) => {
+  const parts = text.split(/(\*\*|\*)/g);
+  let isBold = false;
+  let isItalic = false;
+
+  return parts.map((part, index) => {
+    if (part === "**") {
+      isBold = !isBold;
+      return null;
+    }
+    if (part === "*") {
+      isItalic = !isItalic;
+      return null;
+    }
+
+    if (isBold && isItalic) {
+      return <strong key={index} className="font-semibold italic">{part}</strong>;
+    } else if (isBold) {
+      return <strong key={index} className="font-semibold">{part}</strong>;
+    } else if (isItalic) {
+      return <em key={index} className="italic text-charcoal font-normal">{part}</em>;
+    }
+    return part;
+  }).filter(Boolean);
 };
 
 export default function ChapterSubpage(props: { params: { slug: string, chapterSlug: string } | Promise<{ slug: string, chapterSlug: string }> }) {
@@ -284,11 +461,43 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   `}
                   style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}
                 >
-                  {paragraph}
+                  {renderFormattedText(paragraph)}
                 </p>
               );
             })}
           </div>
+
+          {/* Gratitude Section */}
+          {chapter.gratitude && (
+            <div className="w-full mt-16 sm:mt-24 p-8 sm:p-12 rounded-[2.5rem] bg-white/30 border border-white/50 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.01)] text-left reveal-on-scroll">
+              <h2 className="font-serif text-2xl sm:text-3xl text-charcoal mb-2 tracking-wide">
+                {chapter.gratitude.title}
+              </h2>
+              <p className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/70 font-semibold mb-8">
+                {chapter.gratitude.subtitle}
+              </p>
+              <ul className="flex flex-col gap-6">
+                {chapter.gratitude.items.map((item: any, idx: number) => (
+                  <li key={idx} className="flex items-start gap-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-warm-taupe/50 mt-2.5 flex-shrink-0" />
+                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+                      <span className="font-serif font-medium text-charcoal text-[1.05rem]">
+                        {item.name}
+                      </span>
+                      {item.role && (
+                        <>
+                          <span className="hidden sm:inline text-warm-taupe/40">—</span>
+                          <span className="italic font-light text-charcoal/75 text-sm sm:text-[0.95rem] leading-relaxed">
+                            {item.role}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Footer Signature */}
           <div className="w-12 h-px bg-warm-taupe/30 mt-20 sm:mt-24 mb-6 reveal-on-scroll" />
@@ -316,6 +525,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 1</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     When Destiny Chose The Hour
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-3" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-2`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 2</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    The Beginning of Sleepless Nights
                   </h3>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
                     <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
@@ -358,10 +581,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-2" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-3`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 3</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    When Faith Took Its First Breath
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-3" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
                 <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 3</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 4</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
-                    When Faith Took its First Breath
+                    When Time Stood Still
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon

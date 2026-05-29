@@ -31,6 +31,14 @@ const getSeriesData = (slug: string) => {
           date: "May 24, 2026",
           readTime: "3 min read",
           snippet: "In the midst of the post-delivery procedures, I drifted into a brief sleep, oblivious to the storm quietly unfolding around me...",
+        },
+        {
+          chapterLabel: "Chapter 3",
+          title: "When Faith Took Its First Breath",
+          slug: "chapter-3",
+          date: "May 29, 2026",
+          readTime: "3 min read",
+          snippet: "The next few hours of that night…they unfolded in a way I did not witness myself. I know them only through Ram’s perspective…",
         }
       ]
     }
