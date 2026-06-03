@@ -39,6 +39,14 @@ const getSeriesData = (slug: string) => {
           date: "May 29, 2026",
           readTime: "3 min read",
           snippet: "The next few hours of that night…they unfolded in a way I did not witness myself. I know them only through Ram’s perspective…",
+        },
+        {
+          chapterLabel: "Chapter 4",
+          title: "When Time Stood Still",
+          slug: "chapter-4",
+          date: "June 3, 2026",
+          readTime: "3 min read",
+          snippet: "The unforgettable night.. a night where Ram endured the deepest pain .. of placing our little one, who had just taken his very first breath, into the most terrifying unknown...",
         }
       ]
     }

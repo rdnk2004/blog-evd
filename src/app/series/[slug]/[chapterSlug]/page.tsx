@@ -329,6 +329,104 @@ And in that moment of uncertainty…
             }
           ]
         }
+      },
+      "chapter-4": {
+        chapterLabel: "Chapter 4",
+        title: "When Time Stood Still",
+        date: "June 3, 2026",
+        content: `The unforgettable night.. a night where Ram endured the deepest pain .. of placing our little one, who had just taken his very first breath, into the most terrifying unknown.
+
+Our gynaecologist referred us to her friend, a renowned child specialist at one of the most reputed hospitals in the town. They reached there around 8 p.m. Two friends working in the medical field had already arrived to support Ram through those difficult hours.
+
+From that moment, everything moved with an urgency that left no space for thought.
+Emergency procedures began immediately.
+
+In the late hours of the evening, the senior doctor was summoned without delay. When he arrived and examined the baby, there was a brief but intense exchange of words .. quiet, clinical, yet heavy with meaning.
+Soon after, the surgeon was called in.
+Decisions had to be made.
+After their discussion, the surgeon turned to Ram and asked for his consent to proceed with the surgery. He spoke with honesty…explaining the complexity, the risks, and the painful uncertainty surrounding the success of such a procedure.
+
+But Ram…
+had no words to offer.
+In that moment, he was not standing before a doctor. He was standing before God, in the form of the one who might grant our child a second chance at life.
+
+It was a moment where Ram stood utterly alone…
+on that fragile, invisible line between life and death.
+
+Just born…
+A feeble body.
+The softest skin.
+Tiny, delicate features that were meant to be held with warmth …. now placed under harsh surgical lights.
+A body we would hesitate even to touch too firmly…
+was now to be opened with the sharpest surgical instruments.
+And yet, there they were a team of doctors and nurses, fighting against time, guarding that fragile life in the deep hours of the night.
+Amidst it all, a call went out for O positive blood.
+Though Ram himself was O positive, they held him back … he was in no state to give.
+A cousin stepped forward quietly, ready…if the need arose.
+After strenuous hours, the surgery finally came to an end around 11:30 p.m.
+But even then, it was not a moment of relief.
+
+Not yet.
+The battle inside that tiny body was still being fought … silently, beyond what any eye could see.
+There were no assurances…
+only waiting.
+Waiting for a sign.
+Waiting for a response.
+Waiting for life to choose to stay.
+
+The night stretched ahead …long, uncertain, and unbearably still.
+For Ram, time had lost its meaning.
+Each second felt like an eternity.
+Each passing moment carried the weight of hope and fear intertwined.
+He sat there…
+helpless, yet clinging to a faith that had no words.
+A silence that was not empty …
+but heavy…
+filled with unspoken prayers,
+with trembling hope,
+with quiet surrender.
+
+It was a night that refused to move,
+a night that tested patience, faith, and the very strength of the human heart.
+A night where nothing could be done …
+except wait…and pray.
+
+That night stood still for us…
+but somewhere beyond our fear, life was still moving forward.`,
+        gratitude: {
+          title: "Gratefully Remembered",
+          subtitle: "With heartfelt gratitude to:",
+          items: [
+            {
+              name: "Dr. A.K.Jaleel Ahamed",
+              role: "the Chief paediatrician and Neonatologist, for his timely guidance and care."
+            },
+            {
+              name: "Dr. Diraviaraj",
+              role: "the paediatric surgeon, for taking on the responsibility with courage and compassion."
+            },
+            {
+              name: "The duty doctors and nurses",
+              role: "whose tireless efforts guarded a fragile life through the darkest hours."
+            },
+            {
+              name: "My parents and my in-laws",
+              role: "for their constant prayers and unwavering faith during those difficult moments."
+            },
+            {
+              name: "Mrs. Baby, our family friend, and the hospital staff",
+              role: "for their support and kindness throughout the night."
+            },
+            {
+              name: "Raghu",
+              role: "my brother-in-law’s friend, for helping with all the necessary medical procedures without hesitation."
+            },
+            {
+              name: "Chandru",
+              role: "Ram’s cousin, for stepping forward and being ready to donate blood if needed."
+            }
+          ]
+        }
       }
     }
   };
@@ -546,6 +644,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-4" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-3`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 3</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    When Faith Took Its First Breath
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -595,10 +707,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-3" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 4</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-4`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 4</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     When Time Stood Still
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-4" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <div className="flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 5</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                    The Weight of Waiting
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon
