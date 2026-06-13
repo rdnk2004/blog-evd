@@ -468,9 +468,6 @@ Each day felt like a decade.
 Ram spent his days outside the NICU..in the corridors, in the waiting room, and most often beneath a large tree in the parking area, where he sat for hours, waiting.
 And in between, he would come to see me, after informing the nurse in charge…carrying updates that became my only connection to our child.
 
-We lived those days simply because we were breathing.
-Everything else felt blank.
-
 Calls and enquiries came from all sides, everyone wanting to know how the baby was doing.
 But since no one was allowed to see him, there was little we could tell them.
 
@@ -635,9 +632,9 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                 const src = paragraph.replace("[IMAGE:", "").replace("]", "");
                 return (
                   <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll relative" style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}>
-                    <Image 
-                      src={`/${src}`} 
-                      alt="Story illustration" 
+                    <Image
+                      src={`/${src}`}
+                      alt="Story illustration"
                       width={800}
                       height={600}
                       className="rounded-2xl shadow-sm w-full max-w-md h-auto object-cover opacity-95 filter brightness-[0.95]"
