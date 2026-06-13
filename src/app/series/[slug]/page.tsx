@@ -47,6 +47,14 @@ const getSeriesData = (slug: string) => {
           date: "June 3, 2026",
           readTime: "3 min read",
           snippet: "The unforgettable night.. a night where Ram endured the deepest pain .. of placing our little one, who had just taken his very first breath, into the most terrifying unknown...",
+        },
+        {
+          chapterLabel: "Chapter 5",
+          title: "The Weight of Waiting",
+          slug: "chapter-5",
+          date: "June 8, 2026",
+          readTime: "3 min read",
+          snippet: "Ram sat through the entire night outside the NICU—waiting... just for a word from the doctors.",
         }
       ]
     }

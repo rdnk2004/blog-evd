@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const getChapterData = (seriesSlug: string, chapterSlug: string) => {
   const data: Record<string, Record<string, any>> = {
@@ -427,6 +428,88 @@ but somewhere beyond our fear, life was still moving forward.`,
             }
           ]
         }
+      },
+      "chapter-5": {
+        chapterLabel: "Chapter 5",
+        title: "The Weight of Waiting",
+        date: "June 8, 2026",
+        content: `Ram sat through the entire night outside the NICU—waiting...
+just for a word from the doctors.
+When it finally came, it wasn't a detailed explanation, nor a medical conclusion.
+
+Just a simple sentence that held the weight of everything:
+"God is with you."
+A quiet reassurance amidst the storm.
+
+When Ram came to see me and share those words, something within him gave way. After hours of holding himself together, he finally let his emotions surface.
+Though I was breaking inside, I had to hold back my emotions... for him.
+
+Life had taken a sudden, unimaginable turn.
+We stood there, stranded in its intensity, trying to hold on to faith more than certainty.
+
+One question echoed within me again and again:
+When will I see our child?
+As a solace, my gynaecologist went to see our baby and returned with gentle reassurance:
+"He is fine."
+Those words became my anchor.
+
+The days that followed were especially hard for Ram.
+He stayed outside the NICU constantly…always available for any call, any need, any moment.
+He was allowed just one glimpse of our little one each day.
+
+Our baby was receiving antibiotics through an IV line.
+Just born into a new world, he lay there alone..away from his parents, already fighting for life.
+No familiar hands to caress his delicate skin.
+No mother's embrace to comfort him.
+No father's touch to reassure him.
+Only the gentle care of the nurses, like angels standing guard beside him.
+
+Each day felt like a decade.
+Ram spent his days outside the NICU..in the corridors, in the waiting room, and most often beneath a large tree in the parking area, where he sat for hours, waiting.
+And in between, he would come to see me, after informing the nurse in charge…carrying updates that became my only connection to our child.
+
+We lived those days simply because we were breathing.
+Everything else felt blank.
+
+Calls and enquiries came from all sides, everyone wanting to know how the baby was doing.
+But since no one was allowed to see him, there was little we could tell them.
+
+On the fifth day, I was discharged and returned home.
+But home no longer felt complete.
+Since our child was not yet ready for milk intake, there was no immediate need for me there.
+And so, I waited...
+Not beside my baby, but away from him,held only by hope and a mother's silent prayer.
+
+More than the physical pain of childbirth, Ram was enduring a deeper, silent suffering…one that words could not fully hold.
+His was a pain of waiting, of helplessness... of watching life hang in uncertainty.
+
+After five long days of antibiotics, on the sixth day, the doctors finally advised that our baby could be given a few millilitres of mother's milk.
+It felt like a small step…
+yet, to us, it was everything.
+
+But my body, too, had its own struggle.
+Having not fed for five days, there were complications.
+Still... I tried.
+
+Ram was asked to buy two small stainless-steel containers.
+And with patience, with pain, and with prayer, I managed to express just 10 to 20 millilitres at a time.
+
+[IMAGE:steelcont.jpeg]
+
+Ram...he became the bridge between us.
+Every two hours, he travelled back and forth…carrying those tiny containers as though they held life itself.
+No complaint.
+No exhaustion.
+Just quiet determination.
+
+Slowly...
+very slowly...
+hope began to return.
+A fragile, trembling hope..
+that one day soon, we would finally hold our child in our own hands.
+
+For days, we had lived on faith alone.
+Now, for the first time, hope felt real.`
       }
     }
   };
@@ -548,6 +631,21 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
           {/* Chapter Content */}
           <div className="w-full text-charcoal/85">
             {chapter.content.split('\n\n').map((paragraph: string, index: number) => {
+              if (paragraph.startsWith("[IMAGE:")) {
+                const src = paragraph.replace("[IMAGE:", "").replace("]", "");
+                return (
+                  <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll relative" style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}>
+                    <Image 
+                      src={`/${src}`} 
+                      alt="Story illustration" 
+                      width={800}
+                      height={600}
+                      className="rounded-2xl shadow-sm w-full max-w-md h-auto object-cover opacity-95 filter brightness-[0.95]"
+                    />
+                  </div>
+                );
+              }
+
               // Some custom styling for short impact lines if needed
               const isShortImpact = paragraph.length < 50 && paragraph.includes('…');
 
@@ -658,6 +756,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-5" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-4`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 4</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    When Time Stood Still
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -721,10 +833,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-4" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 5</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-5`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 5</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Weight of Waiting
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-5" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <div className="flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 6</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                    The Glimpse Before the Storm
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon
