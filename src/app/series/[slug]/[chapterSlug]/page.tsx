@@ -507,6 +507,85 @@ that one day soon, we would finally hold our child in our own hands.
 
 For days, we had lived on faith alone.
 Now, for the first time, hope felt real.`
+      },
+      "chapter-6": {
+        chapterLabel: "Chapter 6",
+        title: "The Glimpse Before the Storm",
+        date: "June 13, 2026",
+        content: `Two days passed like that… slow… stretched… 
+suspended between hope and fear.
+Within me, a quiet excitement began to grow, 
+a longing to catch a second glimpse of our little one.
+
+The feeding had begun..gently, cautiously.
+Every line connected to that little body felt like a thread holding life itself.
+The stomach… the lungs…
+everything so fragile, everything still learning to survive.
+There was only one checkpoint..
+one silent prayer that echoed in every heartbeat: there should be no discharge through the external pipe after the milk intake.
+That alone would mean things were alright.
+
+It was the eighth day.
+I was waiting for Ram, for the moment when he would come to take the morning milk.
+Just then, the landline rang.
+It was him.
+
+He asked me to get ready..said he would take me to the hospital to see the baby.
+In that instant, my heart overflowed.
+A drop of happiness escaped through my eyes.
+After days of waiting, this felt like grace.
+
+But the very next moment, I sensed something in his tone was not right.
+A pause.
+A hesitation.
+A silence that spoke more than words.
+I kept asking… again and again…
+until he finally said it.
+
+There was a slight discharge through the external pipe, and the surgeon had been called for an opinion.
+
+Within seconds, everything broke inside me.
+Tears flowed..not gently, but with the force of fear, helplessness
+ and a mother's unspoken dread.
+No words came.
+Only silence…
+heavy and suffocating.
+No words can truly express what we went through in that moment.
+
+Gathering whatever strength, I could find from somewhere deep within,
+ I wiped my tears.
+I struggled not to let my parents see anything.
+I didn't have the strength to tell them what I had just heard.
+Not the fear.
+Not the breaking.
+
+I simply told them, as calmly as I could,
+"The doctor has allowed me to go see the baby."
+
+I got ready as quickly as I could.
+My body was slowly returning to normal after the surgery, the sutures still tender and every movement still careful.
+But none of it mattered.
+Not the pain.
+Not the weakness.
+Nothing felt greater than what our little life was going through.
+
+There was no option, no time to think or arrange for my travel.
+We left on our two-wheeler.
+Ram was extra careful, as though even a small jerk might break something fragile within me.
+
+We hardly spoke.
+Words had no place there.
+Both our hearts were frozen.
+
+As we reached the hospital, I felt nothing.
+No excitement.
+No fear I could name.
+Just a strange emptiness.
+Should I be happy that I was finally going to see my baby?
+Or was something worse waiting for me?
+I did not allow my mind to go further.
+
+But as we walked towards those hospital doors, neither of us knew that the glimpse I had waited for with all my heart would become one of the most painful memories I would ever carry.`
       }
     }
   };
@@ -767,6 +846,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-6" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-5`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 5</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    The Weight of Waiting
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -844,10 +937,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-5" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 6</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-6`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 6</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Glimpse Before the Storm
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-6" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <div className="flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 7</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                    So Near, Yet Beyond My Reach
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon

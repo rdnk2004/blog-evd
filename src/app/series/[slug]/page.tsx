@@ -55,6 +55,14 @@ const getSeriesData = (slug: string) => {
           date: "June 8, 2026",
           readTime: "3 min read",
           snippet: "Ram sat through the entire night outside the NICU—waiting... just for a word from the doctors.",
+        },
+        {
+          chapterLabel: "Chapter 6",
+          title: "The Glimpse Before the Storm",
+          slug: "chapter-6",
+          date: "June 13, 2026",
+          readTime: "3 min read",
+          snippet: "Two days passed like that… slow… stretched… suspended between hope and fear. Within me, a quiet excitement began to grow...",
         }
       ]
     }
