@@ -63,6 +63,14 @@ const getSeriesData = (slug: string) => {
           date: "June 13, 2026",
           readTime: "3 min read",
           snippet: "Two days passed like that… slow… stretched… suspended between hope and fear. Within me, a quiet excitement began to grow...",
+        },
+        {
+          chapterLabel: "Chapter 7",
+          title: "So Near, Yet Beyond My Reach",
+          slug: "chapter-7",
+          date: "June 18, 2026",
+          readTime: "3 min read",
+          snippet: "I followed Ram, unaware of my surroundings, carrying an emptiness that words could never describe...",
         }
       ]
     }
