@@ -529,6 +529,12 @@ const musings = [
 
 const previewPoems = [
   {
+    title: "Feeling Rooted",
+    snippet: "Living miles away,\na place lingers within.\n\nJust the very thought of it\nfills my heart with a quiet peace.",
+    slug: "feeling-rooted",
+    date: "June 30, 2026",
+  },
+  {
     title: "A Gentle Return to Self",
     snippet: "The first twenty years of my life\nwere a small, quiet circle —\njust me,\nmy studies,\nstory books...",
     slug: "a-gentle-return-to-self",
