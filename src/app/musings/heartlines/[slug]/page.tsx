@@ -147,8 +147,8 @@ export default function PoemSubpage(props: { params: { slug: string } | Promise<
             }}
           />
           {/* Deep Forest-Green Earthen Color Grade Overlays */}
-          <div className="absolute inset-0 bg-[#121c10]/45 backdrop-brightness-[0.78] mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#182316]/50 via-transparent to-[#182316]/70" />
+          <div className="absolute inset-0 bg-[#121c10]/30 backdrop-brightness-[0.88] mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#182316]/40 via-transparent to-[#182316]/45" />
         </div>
       )}
 
