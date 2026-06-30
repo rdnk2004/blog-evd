@@ -5,12 +5,17 @@ import Link from "next/link";
 
 // Shared dummy data representing a poem database
 const getPoemBySlug = (slug: string) => {
-  const poems: Record<string, { title: string; date: string; content: string; image?: string }> = {
+  const poems: Record<
+    string,
+    { title: string; date: string; content: string; image?: string; landscapeBg?: string; portraitBg?: string }
+  > = {
     "feeling-rooted": {
       title: "Feeling Rooted",
       date: "June 30, 2026",
       content: "Living miles away,\na place lingers within.\n\nJust the very thought of it\nfills my heart with a quiet peace.\n\nThe freshness in the air.\nThe fragrance of the wet soil.\nThe endless stretch of green fields.\nThe gentle chime of the temple bells.\nThe wide-spreading branches\nof that old mango tree.\nI feel rooted there.\n\nThe cheerful chirping of birds.\nThe squirrels darting from branch to branch.\nThe moos from the cowshed.\nThe rhythmic creak of the pulley\ndrawing water from the well.\nThe sound of that blowpipe\nfiring the wood.\nI feel rooted there.\n\nThe two storey tiled ancestral house\nThe wall lined with old photographs\nThe piled up newspapers\nThe rays of light through the windows\nFills the little rooms\nThe diya lighting the idol in the shelf\nThe long verandas and the polished floor.\nI feel rooted there.\n\nMy soul finds its way back\nThe breeze whispers...\n“You belong here.”",
-      image: "/chatgpt.png"
+      image: "/chatgpt.png",
+      landscapeBg: "/landscape.png",
+      portraitBg: "/portrait.png"
     },
     "a-gentle-return-to-self": {
       title: "A Gentle Return to Self",
@@ -29,6 +34,52 @@ const getPoemBySlug = (slug: string) => {
     date: "Unknown",
     content: "The words you seek have drifted away on the wind."
   };
+};
+
+// Helper function to render formatted poem lines with custom styling matching chatgpt.png
+const renderPoemContent = (content: string) => {
+  return content.split("\n").map((line, index) => {
+    const trimmed = line.trim();
+    
+    // Highlight recurring lines in golden-serif italic
+    if (trimmed === "I feel rooted there.") {
+      return (
+        <span 
+          key={index} 
+          className="block text-[#E1BB5E] font-serif italic font-medium tracking-wide my-4 py-1 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+        >
+          {line}
+        </span>
+      );
+    }
+    
+    // Highlight signature quote in golden font-alex
+    if (trimmed === "“You belong here.”" || trimmed === '"You belong here."' || trimmed === "You belong here.") {
+      return (
+        <span 
+          key={index} 
+          className="block text-[#E1BB5E] font-alex text-4xl sm:text-5xl md:text-6xl mt-8 mb-4 not-italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+        >
+          {line}
+        </span>
+      );
+    }
+    
+    // Spacers for paragraph breaks
+    if (trimmed === "") {
+      return <span key={index} className="block h-6" />;
+    }
+    
+    // Default body lines styled in off-white with text shadow
+    return (
+      <span 
+        key={index} 
+        className="block text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] font-light leading-relaxed my-1.5"
+      >
+        {line}
+      </span>
+    );
+  });
 };
 
 export default function PoemSubpage(props: { params: { slug: string } | Promise<{ slug: string }> }) {
@@ -66,8 +117,8 @@ export default function PoemSubpage(props: { params: { slug: string } | Promise<
   return (
     <main className="flex flex-col w-full bg-[#F3EDE4] min-h-screen overflow-x-hidden relative">
       
-      {/* Dynamic Ambient Background Cover */}
-      {poem.image && (
+      {/* Dynamic Ambient Background Cover (For poems without visual layout backgrounds) */}
+      {poem.image && !poem.landscapeBg && (
         <div
           className="absolute inset-0 z-0 opacity-12 blur-[100px] pointer-events-none scale-110"
           style={{
@@ -78,87 +129,128 @@ export default function PoemSubpage(props: { params: { slug: string } | Promise<
         />
       )}
 
+      {/* Intact Fixed Background Image Container (Landscape for Desktop/Laptop, Portrait for Phone) */}
+      {poem.landscapeBg && poem.portraitBg && (
+        <div className="fixed inset-0 z-0 pointer-events-none w-full h-full">
+          {/* Desktop/Laptop Landscape Background */}
+          <div 
+            className="hidden md:block w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${poem.landscapeBg})`,
+            }}
+          />
+          {/* Mobile Portrait Background */}
+          <div 
+            className="block md:hidden w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${poem.portraitBg})`,
+            }}
+          />
+          {/* Deep Forest-Green Earthen Color Grade Overlays */}
+          <div className="absolute inset-0 bg-[#121c10]/45 backdrop-brightness-[0.78] mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#182316]/50 via-transparent to-[#182316]/70" />
+        </div>
+      )}
+
       {/* ────────────────────────────────────────────
           READING SECTION
           ──────────────────────────────────────────── */}
       <section className="relative w-full pt-40 pb-32 px-4 sm:px-6 flex flex-col items-center min-h-[80vh]">
         
-        {/* Ambient Glow */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-dusty-rose/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-sage/10 rounded-full blur-[150px] pointer-events-none" />
+        {/* Ambient Glow (Only for original clean layouts) */}
+        {!poem.landscapeBg && (
+          <>
+            <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-dusty-rose/10 rounded-full blur-[150px] pointer-events-none" />
+            <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-sage/10 rounded-full blur-[150px] pointer-events-none" />
+          </>
+        )}
 
-        {poem.image ? (
-          /* Premium Split Layout for poems with images */
-          <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        {poem.landscapeBg && poem.portraitBg ? (
+          /* Custom Layout: Scrolling words over a fixed landscape/portrait background */
+          <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center reveal-on-scroll">
             
-            {/* Left Column: Poem Text */}
-            <div className="lg:col-span-7 flex flex-col items-center text-center reveal-on-scroll w-full">
-              <Link
-                href="/musings/heartlines"
-                className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe hover:text-charcoal transition-colors duration-300 mb-12 sm:mb-16"
-              >
-                <span className="transform -translate-x-0 hover:-translate-x-1 transition-transform duration-300">←</span>
-                Back to Collection
-              </Link>
+            {/* Header Area */}
+            <Link
+              href="/musings/heartlines"
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] font-semibold text-white/70 hover:text-[#E1BB5E] transition-all duration-300 mb-12 sm:mb-16 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            >
+              <span className="transform -translate-x-0 hover:-translate-x-1 transition-transform duration-300">←</span>
+              Back to Collection
+            </Link>
 
-              <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-6">{poem.date}</span>
-              
-              <h1 className="font-alex text-[4rem] sm:text-[5rem] md:text-[6.5rem] leading-[0.9] text-charcoal mb-10 sm:mb-16 animate-slide-up" style={{textShadow: "0 4px 20px rgba(0,0,0,0.03)"}}>
-                {poem.title}
-              </h1>
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#E1BB5E]/80 font-bold mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+              {poem.date}
+            </span>
+            
+            {/* Cursive Golden Title */}
+            <h1 className="font-alex text-[4.5rem] sm:text-[6.5rem] md:text-[8.5rem] leading-[0.9] text-[#E1BB5E] mb-10 sm:mb-16 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] animate-slide-up">
+              {poem.title}
+            </h1>
 
-              <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+            <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-[#E1BB5E]/60 to-transparent mb-12 sm:mb-16" />
 
-              {/* Poetry Content */}
-              <div className="text-charcoal/80 font-serif font-light text-lg sm:text-xl md:text-2xl leading-[2.2] sm:leading-[2.5] italic text-center whitespace-pre-line tracking-wide">
-                {poem.content}
-              </div>
-
-              {/* Footer Signature */}
-              <div className="w-12 h-px bg-warm-taupe/30 mt-20 sm:mt-24 mb-6" />
-              <span className="font-alex text-2xl sm:text-3xl text-warm-taupe/60">~ DeepaRam 🌙</span>
+            {/* Poetry Content (Parsed & styled) */}
+            <div className="font-serif font-light text-lg sm:text-xl md:text-2xl leading-[2.2] sm:leading-[2.5] tracking-wide text-center">
+              {renderPoemContent(poem.content)}
             </div>
 
-            {/* Right Column: Framed Image Showcase */}
-            <div className="lg:col-span-5 flex flex-col items-center w-full lg:sticky lg:top-28 reveal-on-scroll" style={{ transitionDelay: "0.2s" }}>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-warm-taupe/50 font-bold mb-4 lg:hidden">
-                Poem Artwork
-              </span>
-              
+            {/* Footer Signature */}
+            <div className="w-12 h-px bg-[#E1BB5E]/40 mt-20 sm:mt-24 mb-6" />
+            <span className="font-alex text-2xl sm:text-3xl text-[#E1BB5E]/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">~ DeepaRam 🌙</span>
+          </div>
+        ) : poem.image ? (
+          /* Visual Layout: Focused entirely on the artwork poster */
+          <div className="relative z-10 w-full max-w-4xl flex flex-col items-center justify-center text-center reveal-on-scroll">
+            
+            {/* Header Area */}
+            <Link
+              href="/musings/heartlines"
+              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe hover:text-charcoal transition-colors duration-300 mb-8 sm:mb-12"
+            >
+              <span className="transform -translate-x-0 hover:-translate-x-1 transition-transform duration-300">←</span>
+              Back to Collection
+            </Link>
+
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mb-6">{poem.date}</span>
+            
+            {/* Focused Artwork Poster Frame */}
+            <div className="w-full flex justify-center items-center px-2 sm:px-4 mb-8 sm:mb-12">
               <button
                 onClick={() => setIsLightboxOpen(true)}
-                className="relative w-full max-w-sm sm:max-w-md lg:max-w-full group overflow-hidden rounded-3xl border-[6px] border-white shadow-[0_15px_45px_rgba(0,0,0,0.08)] transition-all duration-700 hover:scale-[1.03] hover:rotate-1 hover:shadow-[0_25px_55px_rgba(0,0,0,0.18)] cursor-zoom-in"
+                className="relative group overflow-hidden rounded-2xl border-[6px] border-white shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-700 hover:scale-[1.02] hover:rotate-1 hover:shadow-[0_30px_60px_rgba(0,0,0,0.22)] cursor-zoom-in flex items-center justify-center max-w-full"
               >
                 <img
                   src={poem.image}
                   alt={poem.title}
-                  className="w-full h-auto object-contain max-h-[60vh] lg:max-h-[72vh] select-none"
+                  className="w-auto h-auto max-w-full max-h-[68vh] sm:max-h-[72vh] md:max-h-[76vh] object-contain select-none"
                   draggable="false"
                 />
                 
-                {/* Soft elegant frame overlay highlight */}
-                <div className="absolute inset-0 border border-black/5 pointer-events-none rounded-[18px]" />
+                {/* Frame border accent */}
+                <div className="absolute inset-0 border border-black/5 pointer-events-none rounded-[10px]" />
                 
                 {/* Hover overlay hint */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-full shadow-md text-[10px] uppercase tracking-widest font-semibold text-charcoal flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                    <svg className="w-3.5 h-3.5 text-charcoal" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-md text-[10px] uppercase tracking-widest font-semibold text-charcoal flex items-center gap-2 transform translate-y-3 group-hover:translate-y-0 transition-all duration-500">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                     </svg>
-                    View Original
+                    Expand Artwork
                   </div>
                 </div>
               </button>
-              
-              <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold mt-6 hidden lg:inline-flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-dusty-rose animate-pulse" />
-                Click to view full artwork
-              </span>
             </div>
+
+            {/* Subtle Signature / Caption below the image */}
+            <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe/60 font-semibold flex items-center gap-2">
+              <span className="w-2.5 h-px bg-warm-taupe/30" />
+              Click to zoom & read original handwriting
+              <span className="w-2.5 h-px bg-warm-taupe/30" />
+            </span>
 
           </div>
         ) : (
-          /* Original Centered Layout */
+          /* Original Centered Layout (For clean text-only poems) */
           <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center reveal-on-scroll">
             <Link
               href="/musings/heartlines"

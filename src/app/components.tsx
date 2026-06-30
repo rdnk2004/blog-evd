@@ -1,23 +1,32 @@
 "use client";
-
+ 
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
+import { usePathname } from "next/navigation";
+ 
 function NavLink({
   href,
   children,
+  isAlternative,
 }: {
   href: string;
   children: React.ReactNode;
+  isAlternative?: boolean;
 }) {
   return (
     <a
       href={href}
-      className="relative text-[10px] tracking-[0.22em] uppercase font-semibold text-charcoal/80 hover:text-charcoal transition-colors duration-300 group"
+      className={`relative text-[10px] tracking-[0.22em] uppercase font-semibold transition-colors duration-300 group ${
+        isAlternative 
+          ? "text-white/80 hover:text-[#E1BB5E]" 
+          : "text-charcoal/80 hover:text-charcoal"
+      }`}
     >
       {children}
-      <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-warm-taupe group-hover:w-full transition-all duration-400 ease-out" />
+      <span className={`absolute -bottom-0.5 left-0 w-0 h-px transition-all duration-400 ease-out group-hover:w-full ${
+        isAlternative ? "bg-[#E1BB5E]" : "bg-warm-taupe"
+      }`} />
     </a>
   );
 }
@@ -25,6 +34,9 @@ function NavLink({
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isFeelingRooted = pathname === "/musings/heartlines/feeling-rooted";
 
   useEffect(() => {
     let ticking = false;
@@ -68,12 +80,17 @@ export function Header() {
     { href: "#contact", label: "Contact" },
   ];
 
+  const logoSrc = isFeelingRooted ? "/image3.png" : "/im4.png";
+  const burgerColor = isFeelingRooted ? "bg-white" : "bg-charcoal";
+
   return (
     <>
       <header
         className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-in-out ${
           scrolled
-            ? "bg-white/85 backdrop-blur-xl border-b border-warm-taupe/10 shadow-[0_2px_30px_rgba(0,0,0,0.04)]"
+            ? isFeelingRooted
+              ? "bg-[#10190f]/75 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.15)]"
+              : "bg-white/85 backdrop-blur-xl border-b border-warm-taupe/10 shadow-[0_2px_30px_rgba(0,0,0,0.04)]"
             : "bg-transparent"
         }`}
       >
@@ -82,7 +99,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3 group z-10">
             <div className="relative w-11 h-11 flex-shrink-0">
               <Image
-                src="/im4.png"
+                src={logoSrc}
                 alt="DeepaRam Logo"
                 fill
                 sizes="44px"
@@ -90,7 +107,11 @@ export function Header() {
                 className="object-contain transition-transform group-hover:scale-110 duration-500"
               />
             </div>
-            <span className="font-alex text-3xl tracking-wide pt-1 text-charcoal group-hover:text-warm-taupe transition-colors duration-300">
+            <span className={`font-alex text-3xl tracking-wide pt-1 transition-colors duration-300 ${
+              isFeelingRooted
+                ? "text-[#E1BB5E] hover:text-white"
+                : "text-charcoal group-hover:text-warm-taupe"
+            }`}>
               DeepaRam
             </span>
           </Link>
@@ -98,7 +119,7 @@ export function Header() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <NavLink key={link.href} href={link.href}>
+              <NavLink key={link.href} href={link.href} isAlternative={isFeelingRooted}>
                 {link.label}
               </NavLink>
             ))}
@@ -108,7 +129,11 @@ export function Header() {
           <div className="flex items-center gap-4">
             <a
               href="#contact"
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-charcoal text-soft-beige text-[10px] uppercase tracking-[0.2em] font-semibold rounded-full hover:bg-warm-taupe transition-colors duration-300"
+              className={`hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-[10px] uppercase tracking-[0.2em] font-semibold rounded-full transition-colors duration-300 ${
+                isFeelingRooted
+                  ? "bg-[#E1BB5E] text-charcoal hover:bg-white hover:text-charcoal shadow-md"
+                  : "bg-charcoal text-soft-beige hover:bg-warm-taupe"
+              }`}
             >
               Subscribe
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
@@ -124,9 +149,9 @@ export function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden flex flex-col justify-center items-center gap-[5px] w-11 h-11"
             >
-              <span className={`block w-6 h-[1.5px] bg-charcoal transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} />
-              <span className={`block w-6 h-[1.5px] bg-charcoal transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
-              <span className={`block w-6 h-[1.5px] bg-charcoal transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} />
+              <span className={`block w-6 h-[1.5px] ${burgerColor} transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} />
+              <span className={`block w-6 h-[1.5px] ${burgerColor} transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""}`} />
+              <span className={`block w-6 h-[1.5px] ${burgerColor} transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} />
             </button>
           </div>
         </div>
