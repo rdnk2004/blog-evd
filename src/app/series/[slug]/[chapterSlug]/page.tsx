@@ -710,6 +710,112 @@ Some moments in life do not belong to the past.
 
 They continue to live quietly within us...
 forever.`
+      },
+      "chapter-8": {
+        chapterLabel: "Chapter 8",
+        title: "When Hope Stood Still",
+        date: "June 23, 2026",
+        content: `Ram left me back home.
+We tried to quiet the storm within us.
+We spoke very little.. because we both knew 
+that if words came, they would fall as tears.
+
+If I broke, Ram would lose his strength.
+And if he broke, I would have nothing left to hold on to.
+So we stood strong for each other, 
+silently carrying the same unbearable weight.
+
+Calls poured in from our dear ones.
+They longed to come, to sit beside us, to comfort us.
+But we gently refused.
+"Let the child come home first... then," we said.
+
+Yet their love found its way.
+
+Prayers rose from every corner.
+Special poojas were offered in our native temples.
+Hope was being carried for us by many hearts.
+
+I waited...for Ram to return after meeting the surgeon.
+Hours passed like years.
+
+When he finally came home, his silence spoke before he uttered a single word.
+
+The surgeon's conclusion was heartbreaking.
+There was a discharge...and a second surgery might become necessary.
+
+At that age, when my experience of life was so little,
+ I was being asked to endure something far greater than I knew how to bear.
+
+For eight long days, I had gathered every ounce of strength I could find.
+I had held back my tears...my fears...my questions.
+I had just witnessed a sight my heart could never truly take in..
+Our little one, lying there, fighting a battle far beyond his size.
+
+And now...the thought of him having to go through it all once again...
+That was the moment I shattered.
+
+Completely..
+
+Everything I had carried within me for those eight days came pouring out.
+And in that breaking..
+I placed before Krishna the most painful prayer I have ever known.
+
+"If a knife must touch him again...please take him with You.
+ I do not have the strength to watch him suffer once more."
+
+It was a prayer that has never left me.
+Even today, it echoes quietly within my soul, 
+and I know it will remain within me.
+
+I did not have the strength to give my consent for another surgery.
+Yet I was helpless. Nothing was in our hands.
+
+That was the day I cried the most...
+
+...until I received a call from Ram.
+
+Somewhere, amidst that darkness, a flicker of grace appeared.
+
+The Chief paediatric consultant stood firm.
+He requested the surgeon to wait for a few more days.
+His opinion was to continue the antibiotics and stop feeding milk,
+giving the tiny body one more chance to heal.
+
+That became our last thread of hope.
+
+And so began another stretch of emptiness.
+
+Days without shape.
+
+Time without meaning.
+
+Each passing second felt as though life itself was slowly draining away.
+
+Ram remained there..
+outside the NICU...
+on the corridors...
+under the silent shade of a tree.
+
+Waiting..
+
+Alone..
+
+Holding everything together.
+
+Those days changed us forever.
+
+Something within us grew older...
+
+deeper...
+
+quieter…
+
+Life no longer seemed to move.
+
+It simply...
+
+paused.`
       }
     }
   };
@@ -998,6 +1104,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-8" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-7`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 7</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    So Near, Yet Beyond My Reach
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -1103,10 +1223,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-7" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 8</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-8`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 8</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     When Hope Stood Still
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-8" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <div className="flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 9</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                    The Moment Hope Found My Arms
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon

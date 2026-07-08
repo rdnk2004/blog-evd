@@ -71,6 +71,14 @@ const getSeriesData = (slug: string) => {
           date: "June 18, 2026",
           readTime: "3 min read",
           snippet: "I followed Ram, unaware of my surroundings, carrying an emptiness that words could never describe...",
+        },
+        {
+          chapterLabel: "Chapter 8",
+          title: "When Hope Stood Still",
+          slug: "chapter-8",
+          date: "June 23, 2026",
+          readTime: "3 min read",
+          snippet: "Ram left me back home. We tried to quiet the storm within us. We spoke very little.. because we both knew that if words came, they would fall as tears...",
         }
       ]
     }
