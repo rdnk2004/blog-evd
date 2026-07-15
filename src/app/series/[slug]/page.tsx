@@ -79,6 +79,14 @@ const getSeriesData = (slug: string) => {
           date: "June 23, 2026",
           readTime: "3 min read",
           snippet: "Ram left me back home. We tried to quiet the storm within us. We spoke very little.. because we both knew that if words came, they would fall as tears...",
+        },
+        {
+          chapterLabel: "Chapter 9",
+          title: "The Moment Hope Found My Arms",
+          slug: "chapter-9",
+          date: "June 28, 2026",
+          readTime: "3 min read",
+          snippet: "Our waiting… it did not go in vain. Slowly, gently, it began to carry the light of hope. She placed him gently into my arms, as if she were placing my entire world there...",
         }
       ]
     }

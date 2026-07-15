@@ -816,6 +816,83 @@ Life no longer seemed to move.
 It simply...
 
 paused.`
+      },
+      "chapter-9": {
+        chapterLabel: "Chapter 9",
+        title: "The Moment Hope Found My Arms",
+        date: "June 28, 2026",
+        content: `Our waiting… it did not go in vain.
+Slowly, gently, it began to carry the light of hope.
+
+That moment,
+when we truly felt that God was with us..wasn't loud or dramatic. 
+It came quietly… like a miracle unfolding in silence.
+
+For the first time, we saw something different on the faces of the doctors and nurses..a hint of happiness. They were no longer just medical professionals.
+They felt like angels, standing guard over that fragile little life.
+
+Little by little, things began to change.
+Milk was introduced gradually, a small step, 
+yet it felt like a giant leap back toward life. 
+A routine began to take shape again, 
+something we had longed for without even realizing it.
+
+After two days, I was asked to come directly to the hospital.
+
+And there I was…
+waiting in a feeding room.
+I sat there, my heart racing in a way I couldn't explain...
+a mixture of fear, hope, longing… and something deeper.
+
+Then…
+the door opened.
+A nurse walked in,
+carrying him…
+towards me.
+She placed him gently into my arms,
+as if she were placing my entire world there.
+So tiny… so fragile…
+his little body still marked by a line of sutures that had not yet healed. 
+The drainage tube had been removed, but I held him with trembling care,
+afraid that even my touch might hurt him.
+
+And yet…
+his warmth reached me before my thoughts could.
+My hands trembled..not out of fear alone,
+but from the overwhelming reality that he was finally here… in my arms.
+Tears blurred my vision.
+I had imagined this moment countless times,
+but nothing could have prepared me for what it truly felt like.
+
+There was a silence in that room.
+not empty,
+but sacred…
+filled with unspoken prayers,
+battles fought,
+and miracles witnessed.
+
+The nurse guided me gently, helping me hold him closer 
+and showing me how to feed him.
+And in that moment…
+it wasn't just nourishment.
+It was connection.
+It was reassurance.
+It was life flowing back into both of us.
+
+He responded… slowly, gently—
+as if he too was learning this new world,
+this new closeness.
+
+Every second felt sacred.
+All the pain…
+the fear…
+the endless waiting…
+did not disappear.
+But they softened.
+Because in my arms,
+I was no longer just holding him…
+
+I was holding hope itself.`
       }
     }
   };
@@ -1118,6 +1195,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-9" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-8`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 8</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    When Hope Stood Still
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -1237,10 +1328,24 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-8" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 9</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-9`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 9</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Moment Hope Found My Arms
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-9" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <div className="flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 10</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                    The Homecoming of Hope
                   </h3>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
                     Coming Soon
