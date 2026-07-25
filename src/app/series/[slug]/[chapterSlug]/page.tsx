@@ -893,6 +893,106 @@ Because in my arms,
 I was no longer just holding him…
 
 I was holding hope itself.`
+      },
+      "chapter-10": {
+        chapterLabel: "Chapter 10",
+        title: "The Homecoming of Hope",
+        date: "July 3, 2026",
+        content: `Slowly…
+we began to breathe again.
+It wasn't sudden.
+It wasn't complete.
+But somewhere between the silence and the fear, life started finding its way back to us.
+
+Ram and I…
+we were like souls returning after standing too close to the edge..
+We had seen that edge between life and death… not from a distance, but right in front of us.
+
+And now, with fragile hearts and trembling hope, we were learning to live again.
+
+The constant travel back and forth two or three times a day, was beginning to take a toll on my healing body.
+Understanding this, Ram quietly arranged a car through his cousin, taking care of everything, just as he always did, without ever letting me feel the burden of it.
+
+As everything has its own time, and as my mind slowly became calmer, I remembered my schoolmate's father, a senior anaesthesiologist of the same hospital.
+Some people enter our lives exactly when they are needed.
+From that moment onward, he became a pillar of support throughout our stay in the hospital.
+
+After five days, I was admitted to the hospital so I could stay closer to our little one and feed him at the required intervals.
+When he began responding well, he was shifted to our room…
+but with strict instructions.
+No visitors.
+No touch from unfamiliar hands.
+Only two people were allowed to care for him— my mother and me.
+
+We received him, not just with overflowing love, but also with a long list of precautions…
+do's and don'ts…
+Handle with care.
+
+Ram stayed close.
+He sat quietly beside us, watching every tiny movement, holding back a storm of emotions behind his silent strength.
+
+And then…
+that long-awaited day finally arrived..
+the day we could take our little one home.
+
+26th July, 2004
+
+Though our hearts were overflowing with happiness, we were equally overwhelmed.
+We had no idea how to protect this precious little life that had fought so hard to stay with us.
+Every little thing mattered…
+even the way we lifted him into our arms.
+
+The row of thirteen stitches beneath his right arm was still fresh.
+The skin had not yet healed.
+Just below the sutures was the tiny opening through which the drainage tube had been inserted.
+That too was still healing.
+He smiled with such innocence…
+yet every smile reminded us of the pain his tiny body had endured.
+
+Home…
+was no longer the same.
+Our lifestyle changed.
+Our home transformed.
+Our entire world began to revolve around him.
+
+And we were ready…
+willingly, wholeheartedly...
+to sacrifice anything for this new life that had been entrusted to us.
+Every moment demanded vigilance.
+
+We lived with constant awareness, protecting him from even the slightest risk.
+Infections became our silent fear.
+The house was cleaned repeatedly.
+His clothes were washed, sanitized, and carefully sterilized.
+Everything he touched was handled with utmost care.
+Every breath around him felt like a responsibility.
+It wasn't easy…
+but it was love,
+in its purest, most protective form.
+Because after everything we had witnessed, after everything we had endured…
+this fragile little life was not just our child.
+
+He was our miracle..
+returned to us,
+one careful breath at a time.
+
+*"Some hands heal through medicine. Others heal through prayer. We were blessed by both."*
+
+Hare Krishna.`,
+        gratitude: {
+          title: "Gratefully Remembered",
+          subtitle: "With heartfelt gratitude to:",
+          items: [
+            {
+              name: "Dr. Sri Ramachandran",
+              role: "Senior Anaesthesiologist, Father of my dear friend, Vishnu, for his timely medical guidance and compassionate support throughout our stay in the hospital."
+            },
+            {
+              name: "Our family members, friends, and well-wishers",
+              role: "whose prayers, kindness, and unwavering faith carried us through our darkest days."
+            }
+          ]
+        }
       }
     }
   };
@@ -1055,21 +1155,18 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
               <p className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/70 font-semibold mb-8">
                 {chapter.gratitude.subtitle}
               </p>
-              <ul className="flex flex-col gap-6">
+              <ul className="flex flex-col gap-6 sm:gap-7">
                 {chapter.gratitude.items.map((item: any, idx: number) => (
-                  <li key={idx} className="flex items-start gap-4">
-                    <span className="w-1.5 h-1.5 rounded-full bg-warm-taupe/50 mt-2.5 flex-shrink-0" />
-                    <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
-                      <span className="font-serif font-medium text-charcoal text-[1.05rem]">
+                  <li key={idx} className="flex items-start gap-3.5 sm:gap-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-warm-taupe/60 mt-2.5 flex-shrink-0" />
+                    <div className="flex flex-col gap-1 text-left flex-1">
+                      <span className="font-serif font-medium text-charcoal text-[1.05rem] sm:text-[1.15rem] leading-snug">
                         {item.name}
                       </span>
                       {item.role && (
-                        <>
-                          <span className="hidden sm:inline text-warm-taupe/40">—</span>
-                          <span className="italic font-light text-charcoal/75 text-sm sm:text-[0.95rem] leading-relaxed">
-                            {item.role}
-                          </span>
-                        </>
+                        <p className="italic font-light text-charcoal/75 text-sm sm:text-[0.95rem] leading-relaxed">
+                          {item.role}
+                        </p>
                       )}
                     </div>
                   </li>
@@ -1202,6 +1299,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 8</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     When Hope Stood Still
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-10" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-9`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 9</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    The Moment Hope Found My Arms
                   </h3>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
                     <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
@@ -1342,15 +1453,16 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
             ) : slugs.chapterSlug === "chapter-9" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <div className="flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1">Chapter 10</span>
-                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2">
+                <Link href={`/series/${slugs.slug}/chapter-10`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 10</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Homecoming of Hope
                   </h3>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 italic">
-                    Coming Soon
-                  </span>
-                </div>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
               </div>
             ) : null}
           </div>

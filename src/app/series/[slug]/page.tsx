@@ -87,6 +87,14 @@ const getSeriesData = (slug: string) => {
           date: "June 28, 2026",
           readTime: "3 min read",
           snippet: "Our waiting… it did not go in vain. Slowly, gently, it began to carry the light of hope. She placed him gently into my arms, as if she were placing my entire world there...",
+        },
+        {
+          chapterLabel: "Chapter 10",
+          title: "The Homecoming of Hope",
+          slug: "chapter-10",
+          date: "July 3, 2026",
+          readTime: "4 min read",
+          snippet: "Slowly… we began to breathe again. Somewhere between the silence and the fear, life started finding its way back to us...",
         }
       ]
     }
