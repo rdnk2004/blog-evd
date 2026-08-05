@@ -1072,9 +1072,7 @@ Would he adjust to a new environment? Would he be safe away from us? Would dust,
 
 We had no answers.
 
-I kept a daily record of his health, medications, hospital visits, and doctor's consultations. It became a habit… almost like writing a diary. Year after year, I filled those pages until 2012, when we were blessed with a younger brother for him.
-
-[IMAGE:diaries.png]`
+I kept a daily record of his health, medications, hospital visits, and doctor's consultations. It became a habit… almost like writing a diary. Year after year, I filled those pages until 2012, when we were blessed with a younger brother for him.`
       }
     }
   };
