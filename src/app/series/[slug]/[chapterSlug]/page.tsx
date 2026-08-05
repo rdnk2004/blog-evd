@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
 const getChapterData = (seriesSlug: string, chapterSlug: string) => {
   const data: Record<string, Record<string, any>> = {
@@ -993,6 +994,87 @@ Hare Krishna.`,
             }
           ]
         }
+      },
+      "chapter-11": {
+        chapterLabel: "Chapter 11",
+        title: "Learning to Live with Fear",
+        date: "July 8, 2026",
+        content: `The next phase of our journey was like walking blindfolded while holding life in our hands.
+
+For any first-time parents, caring for a new born comes with uncertainty. Every cry leaves them wondering what their baby needs.
+
+For us, it was something more.
+Every moment demanded caution.
+
+Our home slowly transformed into a miniature hospital. As he was highly vulnerable to infections, his surroundings had to be kept clean and sterilized.
+
+His daily routine and medications were carefully noted and followed.
+
+We removed anything that could trigger his breathing… no aromatic products, no talcum powder, no room sprays, no incense sticks. Whenever anything was fried in the kitchen, he was gently taken outside until the air was clear.
+
+Each day felt like crossing another milestone.
+
+The doctors had advised us to prevent him from crying too much. But he did.
+One such day, despite all our efforts, he cried relentlessly. Suddenly, his tiny lips turned blue. He stopped breathing and became unconscious in my arms.
+We were completely clueless.
+Panic took over.
+Ram tried to revive him by giving mouth-to-mouth breathing. Within what felt like an eternity…but was hardly a minute, he slowly regained consciousness.
+
+Those few seconds...
+They remain among the most terrifying moments of our lives.
+
+We rushed him to the hospital. The doctor examined him, reassured us that there was nothing to worry about, and patiently taught us the first-aid measures to follow if such episodes happened again.
+
+Even then, I witnessed three more such frightening episodes over the following months.
+
+Some fears become familiar.
+
+But they never become easier.
+
+Slowly, we began to understand his condition and adjusted our lives around it. Yet some moments refuse to leave the heart, no matter how many years pass.
+
+Sleep became a luxury.
+Many nights, I woke several times… not because he cried, but simply to make sure he was still breathing.
+
+Apart from these frightening episodes, he was an active little boy. His growth and developmental milestones were just like those of any other child.
+
+But life was not done testing us.
+
+When he was just three months old, we were hospitalized again… this time for ten days. He was diagnosed with acute bronchiolitis (bronchopneumonia).
+After returning home, it took him many days to settle back into his routine.
+
+But for us, happiness was like a bubble floating in the air.
+Before we could truly hold on to it...
+it would burst.
+
+The hospital became our second home. The doctors and nurses gradually became like our own family.
+
+Three months later, he was admitted once again with another pneumonia attack. Seven more days passed within those familiar hospital walls.
+
+The pattern continued.
+
+Every four or five months, another hospitalization followed. Four more times, he was admitted with HRAD (Hyper-Reactive Airway Disease).
+
+Life was no longer measured by festivals, birthdays, or celebrations
+It measured itself through hospital admissions, medicines, sleepless nights... and the quiet gratitude of bringing our little boy safely back home each time.
+
+Amidst all those hospital visits and anxious days, life still found quiet reasons to celebrate.
+
+When he was six months old, we travelled to our native temple and named him Nikhil Krishna. It was a simple, sacred ceremony—one that filled our hearts with hope and prayers for the little life we held so close.
+
+Time moved on, and before we knew it, another milestone stood before us.
+
+When he turned three, it was time for school.
+For most parents, sending a child to school is a joyful beginning.
+For us, it came with another set of fears.
+
+Would he adjust to a new environment? Would he be safe away from us? Would dust, infections, or an unexpected crying spell trigger another breathing episode?
+
+We had no answers.
+
+I kept a daily record of his health, medications, hospital visits, and doctor's consultations. It became a habit… almost like writing a diary. Year after year, I filled those pages until 2012, when we were blessed with a younger brother for him.
+
+[IMAGE:diaries.png]`
       }
     }
   };
@@ -1026,17 +1108,14 @@ const renderFormattedText = (text: string) => {
   }).filter(Boolean);
 };
 
-export default function ChapterSubpage(props: { params: { slug: string, chapterSlug: string } | Promise<{ slug: string, chapterSlug: string }> }) {
-  const [slugs, setSlugs] = useState<{ slug: string, chapterSlug: string } | null>(null);
+export default function ChapterSubpage() {
+  const rawParams = useParams();
+  const slug = (rawParams?.slug as string) || "";
+  const chapterSlug = (rawParams?.chapterSlug as string) || "";
+  const slugs = { slug, chapterSlug };
 
   useEffect(() => {
-    Promise.resolve(props.params).then((resolved) => {
-      setSlugs({ slug: resolved.slug, chapterSlug: resolved.chapterSlug });
-    });
-  }, [props.params]);
-
-  useEffect(() => {
-    if (!slugs) return;
+    if (!slug || !chapterSlug) return;
     window.scrollTo(0, 0); // Reset scroll position to top when page loads
 
     const observer = new IntersectionObserver(
@@ -1117,7 +1196,7 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
               if (paragraph.startsWith("[IMAGE:")) {
                 const src = paragraph.replace("[IMAGE:", "").replace("]", "");
                 return (
-                  <div key={index} className="w-full my-12 sm:my-16 flex justify-center reveal-on-scroll relative" style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}>
+                  <div key={index} className="w-full mt-8 mb-4 sm:mt-10 sm:mb-6 flex justify-center reveal-on-scroll relative" style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}>
                     <Image
                       src={`/${src}`}
                       alt="Story illustration"
@@ -1176,7 +1255,7 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
           )}
 
           {/* Footer Signature */}
-          <div className="w-12 h-px bg-warm-taupe/30 mt-20 sm:mt-24 mb-6 reveal-on-scroll" />
+          <div className="w-12 h-px bg-warm-taupe/30 mt-8 sm:mt-12 mb-5 reveal-on-scroll" />
           <span className="font-alex text-2xl sm:text-3xl text-warm-taupe/60 reveal-on-scroll">~ DeepaRam 🌙</span>
 
           {/* Chapter Navigation */}
@@ -1313,6 +1392,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 9</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Moment Hope Found My Arms
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-11" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-10`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 10</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    The Homecoming of Hope
                   </h3>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
                     <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
@@ -1457,6 +1550,20 @@ export default function ChapterSubpage(props: { params: { slug: string, chapterS
                   <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 10</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
                     The Homecoming of Hope
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-10" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-11`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 11</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    Learning to Live with Fear
                   </h3>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
                     Read

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 const getSeriesData = (slug: string) => {
   const seriesDB: Record<string, any> = {
@@ -95,6 +96,14 @@ const getSeriesData = (slug: string) => {
           date: "July 3, 2026",
           readTime: "4 min read",
           snippet: "Slowly… we began to breathe again. Somewhere between the silence and the fear, life started finding its way back to us...",
+        },
+        {
+          chapterLabel: "Chapter 11",
+          title: "Learning to Live with Fear",
+          slug: "chapter-11",
+          date: "July 8, 2026",
+          readTime: "4 min read",
+          snippet: "The next phase of our journey was like walking blindfolded while holding life in our hands. Our home slowly transformed into a miniature hospital...",
         }
       ]
     }
@@ -103,14 +112,9 @@ const getSeriesData = (slug: string) => {
   return seriesDB[slug];
 };
 
-export default function SeriesSubpage(props: { params: { slug: string } | Promise<{ slug: string }> }) {
-  const [slug, setSlug] = useState<string>("");
-
-  useEffect(() => {
-    Promise.resolve(props.params).then((resolved) => {
-      setSlug(resolved.slug);
-    });
-  }, [props.params]);
+export default function SeriesSubpage() {
+  const rawParams = useParams();
+  const slug = (rawParams?.slug as string) || "";
 
   useEffect(() => {
     if (!slug) return;
