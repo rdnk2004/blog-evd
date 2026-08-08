@@ -1200,14 +1200,11 @@ No fear of what the next moment might bring.
 
 There was only gratitude.
 
-Twenty-one years ago, they met in a battle for life.
-Twenty-one years later, they met again, to celebrate it.
-
 [IMAGE:WA_1786207878858.jpg.jpeg]
 
-July 6, 2025 — Nikhil's 21st birthday
-Twenty-one years ago, they met in a battle for life.
-Twenty-one years later, they met again, to celebrate it.
+[CENTER]July 6, 2025 — Nikhil's 21st birthday
+*Twenty-one years ago, they met in a battle for life.*
+*Twenty-one years later, they met again, to celebrate it.*
 
 And perhaps, of all the moments this journey has given us, this was the one that made us look back and quietly say…
 
@@ -1358,17 +1355,25 @@ export default function ChapterSubpage() {
               }
 
               // Some custom styling for short impact lines if needed
-              const isShortImpact = paragraph.length < 50 && paragraph.includes('…');
+              let cleanParagraph = paragraph;
+              let isCentered = false;
+              if (cleanParagraph.startsWith("[CENTER]")) {
+                isCentered = true;
+                cleanParagraph = cleanParagraph.replace("[CENTER]", "").trim();
+              }
+
+              const isShortImpact = cleanParagraph.length < 50 && cleanParagraph.includes('…');
 
               return (
                 <p
                   key={index}
-                  className={`mb-8 sm:mb-12 font-serif font-light text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] leading-[2.1] sm:leading-[2.5] text-left whitespace-pre-line tracking-wide reveal-on-scroll transition-all duration-700
+                  className={`mb-8 sm:mb-12 font-serif font-light text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] leading-[2.1] sm:leading-[2.5] whitespace-pre-line tracking-wide reveal-on-scroll transition-all duration-700
+                    ${isCentered ? 'text-center' : 'text-left'}
                     ${isShortImpact ? 'text-charcoal' : 'text-charcoal/90'}
                   `}
                   style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}
                 >
-                  {renderFormattedText(paragraph)}
+                  {renderFormattedText(cleanParagraph)}
                 </p>
               );
             })}
