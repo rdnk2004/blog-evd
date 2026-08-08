@@ -1073,6 +1073,157 @@ Would he adjust to a new environment? Would he be safe away from us? Would dust,
 We had no answers.
 
 I kept a daily record of his health, medications, hospital visits, and doctor's consultations. It became a habit… almost like writing a diary. Year after year, I filled those pages until 2012, when we were blessed with a younger brother for him.`
+      },
+      "chapter-12": {
+        chapterLabel: "Chapter 12",
+        title: "Growing Beyond the Restrictions",
+        date: "July 13, 2026",
+        content: `His nursery years recorded the fewest days of attendance.
+Illness kept him away from school far more often than it allowed him to be there. At the beginning of every academic year, I would meet his class teacher, explain his medical condition, and tell them about the precautions he needed.
+
+Inhalers, nebulization, antibiotics, and steroids had become a routine part of his childhood.
+
+An allergic cough could be triggered by the smallest of things. Once it began, it would often continue for ten to fifteen days, leaving him exhausted and keeping him away from school.
+
+Every illness meant the same cycle again… medicines, rest, missed classes, and the constant worry of whether the episode would become something more serious.
+
+As he entered primary school, we finally began to breathe a little easier.
+He was growing old enough to understand his own body. He could recognize when he was uncomfortable and tell us what he was feeling. That small ability gave us a little more confidence.
+
+At school, whenever he felt unwell, he would often find himself in the Vice Principal's cabin.
+She knew nothing about the difficult circumstances surrounding his birth. She did not know the fears we had carried through those early years, or how carefully we had watched over him.
+Yet, whenever he fell ill at school, she instinctively gave him the care and attention he needed.
+
+Looking back, I feel that God had placed yet another kind soul in our path.
+
+We were always searching for a permanent way to improve his health and free him, at least to some extent, from the medicines. We tried natural therapies and different approaches, hoping that perhaps something would finally give him lasting relief.
+
+But more often than not, our attempts ended with another difficult episode.
+Hope would lead us to try something new, and experience would teach us to be cautious again.
+
+When he reached secondary school, we shifted him to a school closer to our home.
+It was a simple decision, but it brought us immense comfort.
+Knowing that we could reach him quickly whenever the need arose gave us a sense of security that only parents who have lived with constant uncertainty can truly understand.
+
+If there had been an award for the parent who wrote the highest number of leave letters, I am certain I would have received it.
+There were so many of them.
+Leave because of a cough.
+Leave because of fever.
+Leave because of hospitalization.
+Leave because he simply needed time to recover.
+
+His school attendance may have been inconsistent, but his determination to learn never was.
+In spite of the absences, the medicines, the hospital visits, and the restrictions, Nikhil continued to excel in academics at every stage of his studies.
+
+But academics were only one part of childhood.
+
+There were school activities he could not participate in. There were outings he had to miss. There were moments with friends that happened without him.
+
+And somewhere along the way, he did develop a sense of insecurity.
+Perhaps he wondered why his life had to be different.
+Why he had to be careful when others could simply run.
+Why he had to miss things that other children took for granted.
+
+As parents, we could not always remove those feelings for him.
+We could only stand beside him, reassure him, and allow him to discover his own strength.
+
+And slowly, he did.
+
+By the time he entered college, he had begun to understand his strengths as well as his limitations. He no longer looked at his restrictions only as things that held him back.
+
+He learned to work around them.
+
+He learned to choose what mattered.
+
+He learned that being different did not mean being less.
+
+That was perhaps one of the greatest milestones of his growing years…not a medical recovery, but an inner one.
+
+Looking back now, I realize that we had spent so many years watching his breathing, his cough, his medicines, his temperature, his school attendance...
+We had been so focused on protecting his body that we sometimes forgot to notice how strong his spirit was becoming.
+
+He was not defined by the days he missed.
+
+He was defined by the days he showed up.
+
+He was not defined by the medicines he needed.
+
+He was defined by the dreams he continued to carry.
+
+And he was not defined by the restrictions placed upon his childhood.
+
+He learned to grow beyond them.
+
+Watching him learn, grow, and move forward reminded us of something life had been quietly teaching us all along…
+
+A child's spirit can be far stronger than the body that carries it.`,
+        gratitude: {
+          title: "Gratefully Remembered",
+          subtitle: "With heartfelt gratitude to:",
+          items: [
+            {
+              name: "Mrs. Girija",
+              role: "Vice Principal, G.D. Matriculation School, for the motherly care she extended to Nikhil during his school years, and for continuing to be his well-wisher even today."
+            }
+          ]
+        }
+      },
+      "epilogue": {
+        chapterLabel: "Epilogue",
+        title: "When Life Came Full Circle",
+        date: "July 6, 2025",
+        content: `Years later, life gave us a moment we could never have imagined.
+
+Uncle Dr. Sri Ramachandran (Vishnu's father)… had always been genuinely happy to hear about Nikhil's progress in life. He had followed his journey with affection, and it was he who initiated this meeting and made this beautiful moment possible.
+
+And then came another coincidence that made it even more special.
+
+It happened on July 6, 2025... Nikhil's 21st birthday, exactly twenty-one years after the day they had first met.
+
+Twenty-one years earlier, Nikhil had met his surgeon as a tiny baby, in circumstances filled with fear, uncertainty, and prayers.
+
+This time, he walked towards the same man as a twenty-one-year-old.
+
+The moment he saw his surgeon, Nikhil simply fell at his feet… with gratitude for the life he had been given.
+
+I stood there and watched.
+
+There are moments in life when words become too small.
+
+I could only look at them and think of that tiny baby whose every breath had once been a prayer.
+
+The surgeon who had once fought to give him a chance at life was now standing beside the young man that baby had become.
+
+There was no hospital room that day.
+No anxious waiting outside an operating theatre.
+No fear of what the next moment might bring.
+
+There was only gratitude.
+
+Twenty-one years ago, they met in a battle for life.
+Twenty-one years later, they met again, to celebrate it.
+
+[IMAGE:WA_1786207878858.jpg.jpeg]
+
+July 6, 2025 — Nikhil's 21st birthday
+Twenty-one years ago, they met in a battle for life.
+Twenty-one years later, they met again, to celebrate it.
+
+And perhaps, of all the moments this journey has given us, this was the one that made us look back and quietly say…
+
+Yes.
+
+He was meant to be here.`,
+        gratitude: {
+          title: "Gratefully Remembered",
+          subtitle: "With heartfelt gratitude to:",
+          items: [
+            {
+              name: "Uncle Dr. Sri Ramachandran (Vishnu's father)",
+              role: "For always taking a genuine interest in Nikhil's journey and being happy to hear about every little progress in his life. And for making one of the most beautiful moments of our journey possible."
+            }
+          ]
+        }
       }
     }
   };
@@ -1411,6 +1562,34 @@ export default function ChapterSubpage() {
                   </div>
                 </Link>
               </div>
+            ) : slugs.chapterSlug === "chapter-12" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-11`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 11</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    Learning to Live with Fear
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "epilogue" ? (
+              <div className="flex flex-col items-center sm:items-start flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Previous Chapter</span>
+                <Link href={`/series/${slugs.slug}/chapter-12`} className="group flex flex-col items-center sm:items-start">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 12</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    Growing Beyond the Restrictions
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    <span className="transform -translate-x-0 group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                    Read
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div className="flex-1 hidden sm:block" />
             )}
@@ -1555,13 +1734,27 @@ export default function ChapterSubpage() {
                   </div>
                 </Link>
               </div>
-            ) : slugs.chapterSlug === "chapter-10" ? (
+            ) : slugs.chapterSlug === "chapter-11" ? (
               <div className="flex flex-col items-center sm:items-end flex-1">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
-                <Link href={`/series/${slugs.slug}/chapter-11`} className="group flex flex-col items-center sm:items-end">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 11</span>
+                <Link href={`/series/${slugs.slug}/chapter-12`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Chapter 12</span>
                   <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
-                    Learning to Live with Fear
+                    Growing Beyond the Restrictions
+                  </h3>
+                  <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
+                    Read
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+                </Link>
+              </div>
+            ) : slugs.chapterSlug === "chapter-12" ? (
+              <div className="flex flex-col items-center sm:items-end flex-1">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-warm-taupe/50 font-semibold mb-4">Next Chapter</span>
+                <Link href={`/series/${slugs.slug}/epilogue`} className="group flex flex-col items-center sm:items-end">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/80 font-semibold mb-1 group-hover:text-charcoal transition-colors duration-300">Epilogue</span>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 group-hover:text-warm-taupe transition-colors duration-300">
+                    When Life Came Full Circle
                   </h3>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal transition-colors duration-300">
                     Read

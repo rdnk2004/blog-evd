@@ -104,6 +104,22 @@ const getSeriesData = (slug: string) => {
           date: "July 8, 2026",
           readTime: "4 min read",
           snippet: "The next phase of our journey was like walking blindfolded while holding life in our hands. Our home slowly transformed into a miniature hospital...",
+        },
+        {
+          chapterLabel: "Chapter 12",
+          title: "Growing Beyond the Restrictions",
+          slug: "chapter-12",
+          date: "July 13, 2026",
+          readTime: "4 min read",
+          snippet: "His nursery years recorded the fewest days of attendance. Illness kept him away from school far more often than it allowed him to be there...",
+        },
+        {
+          chapterLabel: "Epilogue",
+          title: "When Life Came Full Circle",
+          slug: "epilogue",
+          date: "July 6, 2025",
+          readTime: "2 min read",
+          snippet: "Years later, life gave us a moment we could never have imagined. Twenty-one years ago, they met in a battle for life. Twenty-one years later, they met again, to celebrate it...",
         }
       ]
     }
