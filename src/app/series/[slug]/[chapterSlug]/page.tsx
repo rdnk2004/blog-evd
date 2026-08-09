@@ -1200,17 +1200,17 @@ No fear of what the next moment might bring.
 
 There was only gratitude.
 
-[IMAGE:WA_1786207878858.jpg.jpeg]
-
-[CENTER]July 6, 2025 — Nikhil's 21st birthday
-*Twenty-one years ago, they met in a battle for life.*
-*Twenty-one years later, they met again, to celebrate it.*
-
 And perhaps, of all the moments this journey has given us, this was the one that made us look back and quietly say…
 
 Yes.
 
-He was meant to be here.`,
+He was meant to be here.
+
+[IMAGE:WA_1786207878858.jpg.jpeg]
+
+[CENTER]July 6, 2025 — Nikhil's 21st birthday
+*Twenty-one years ago, they met in a battle for life.*
+*Twenty-one years later, they met again, to celebrate it.*`,
         gratitude: {
           title: "Gratefully Remembered",
           subtitle: "With heartfelt gratitude to:",
