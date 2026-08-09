@@ -1218,6 +1218,10 @@ He was meant to be here.
             {
               name: "Uncle Dr. Sri Ramachandran (Vishnu's father)",
               role: "For always taking a genuine interest in Nikhil's journey and being happy to hear about every little progress in his life. And for making one of the most beautiful moments of our journey possible."
+            },
+            {
+              name: "Dr. Diraviaraj, Pediatric Surgeon",
+              role: "Devi Hospital, Coimbatore."
             }
           ]
         }
