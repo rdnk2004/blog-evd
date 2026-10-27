@@ -427,6 +427,16 @@ function QuoteSection() {
 
 const posts = [
   {
+    title: "A Reflection on the Paths We Take",
+    date: "October 27, 2026",
+    readTime: "3 min read",
+    category: "Soul",
+    categoryColor: "#CFA989",
+    slug: "a-reflection-on-the-paths-we-take",
+    excerpt: "Observing different journeys, each unique in its choices, struggles, and destinations ... made me wonder how differently a journey can unfold from what was once imagined.",
+    tag: "🌿",
+  },
+  {
     title: "When Silence Spoke Love",
     date: "May 13, 2026",
     readTime: "3 min read",
@@ -435,16 +445,6 @@ const posts = [
     slug: "when-silence-spoke-love",
     excerpt: "What began with glances and a handmade card slowly grew into something far stronger than either of them could have imagined .... a journey of two worlds learning to become one.",
     tag: "💌",
-  },
-  {
-    title: "The Departure of a Soul…",
-    date: "May 5, 2026",
-    readTime: "3 min read",
-    category: "Soul",
-    categoryColor: "#A8B5A1",
-    slug: "the-departure-of-a-soul",
-    excerpt: "As the Bhagavad Gita says, there is no death for the soul… the soul may take another attire, not the form we knew. That was the first time she had truly witnessed a soul departing in such a manner...",
-    tag: "🕊️",
   },
 ];
 

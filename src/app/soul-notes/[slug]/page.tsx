@@ -1,11 +1,38 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
+const reflectionOnPaths = {
+  title: "A Reflection on the Paths We Take",
+  date: "October 27, 2026",
+  category: "Soul",
+  readTime: "3 min read",
+  content: [
+    "Observing different journeys, each unique in its choices, struggles, and destinations ... made me wonder how differently a journey can unfold from what was once imagined. How often do desires overshadow wisdom? How frequently do we overlook the signs that invite us to pause, reflect, or change direction? And how many precious moments do we recognise only when they have become memories?",
+    "These observations are not judgements, but reflections on the complexities of being human. Every life carries a story that cannot be fully understood from the outside. Behind every choice lies a reason, behind every detour a circumstance, and behind every regret a lesson that may have taken years to unfold.",
+    "This is one such reflection—a glimpse into a life that seems to have strayed from its intended path, yet continues to search for meaning, direction, and perhaps, a way forward.",
+    "A Path I Chose, A Path Yet to Find",
+    "As I set out to forge my own path in life, I chose the route that promised instant gratification and the fulfilment of my desires. In my immaturity and inexperience, I was unaware of the subtle yet profound signs the universe was sending my way.",
+    "Now, in this moment of feeling stranded, I have come to realise that the universe often whispers guidance towards our true path through subtle signs, through people, and through the rhythms of nature.",
+    "Yet, I often strayed because I failed to heed those signs.",
+    "As I moved forward, the path gradually diverged from what I had once imagined for myself. Time and again, the universe offered me opportunities to pause, reflect, and correct my course, but I remained oblivious. I kept moving forward, believing that the path I had chosen was the one I was meant to walk.",
+    "Eventually, I reached a point where turning back seemed increasingly difficult, burdened by the weight of resentment, guilt, and regret.",
+    "Only in retrospect do I realise how many precious moments I had overlooked and how the loving presence of those who once enriched my life has gradually faded into memory.",
+    "And here I stand...still, alone, and searching for my way, yet to find the path that feels truly mine.",
+    "Perhaps this, too, is part of the journey.",
+    "This journey, with all its triumphs and tribulations, is mine to own. I must bear the weight of my choices, learn from the paths I have taken, and accept the lessons they have left behind.",
+    "My life is uniquely mine...crafted by a higher power and woven through choices, encounters, mistakes, lessons, and grace.",
+    "Perhaps the path I chose was not entirely the path I was meant to follow.",
+    "But perhaps every turn, every detour, and even every moment of feeling stranded is quietly leading me towards a destination I have yet to understand."
+  ]
+};
+
 const notesData: Record<string, { title: string; date: string; category: string; readTime: string; content: string[] }> = {
+  "a-reflection-on-the-paths-we-take": reflectionOnPaths,
+  "a-path-i-chose-a-path-yet-to-find": reflectionOnPaths,
   "the-departure-of-a-soul": {
     title: "The Departure of a Soul…",
     date: "May 5, 2026",
@@ -247,18 +274,37 @@ export default function NotePage() {
                 );
               }
 
+              if (paragraph === "A Path I Chose, A Path Yet to Find") {
+                return (
+                  <div key={index} className="my-12 sm:my-16 text-center reveal-on-scroll" style={{ transitionDelay: `${Math.min(index * 0.03, 0.3)}s` }}>
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                      <div className="h-px w-10 sm:w-16 bg-warm-taupe/40" />
+                      <span className="text-[10px] uppercase tracking-[0.25em] text-warm-taupe font-semibold">Reflection</span>
+                      <div className="h-px w-10 sm:w-16 bg-warm-taupe/40" />
+                    </div>
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal leading-snug">
+                      {paragraph}
+                    </h2>
+                  </div>
+                );
+              }
+
               const isDialogue = paragraph.startsWith("“") || paragraph.startsWith("\"");
               const isShortThought = paragraph === "Will this fall off?" || 
                                      paragraph === "Perhaps there is a reason for this." ||
                                      paragraph === "Mother, why did that thought come to me yesterday? Why did I lose it?" ||
-                                     paragraph === "Will I find an earring before I leave this place?";
+                                     paragraph === "Will I find an earring before I leave this place?" ||
+                                     paragraph === "Perhaps this, too, is part of the journey." ||
+                                     paragraph === "Perhaps the path I chose was not entirely the path I was meant to follow." ||
+                                     paragraph === "Yet, I often strayed because I failed to heed those signs." ||
+                                     paragraph === "And here I stand...still, alone, and searching for my way, yet to find the path that feels truly mine.";
                                      
               const linkRegex = /\[(.*?)\]\((.*?)\)/g;
               const hasLink = linkRegex.test(paragraph);
 
-              let content: any = paragraph;
+              let content: ReactNode = paragraph;
               if (hasLink) {
-                const elements = [];
+                const elements: ReactNode[] = [];
                 let lastIndex = 0;
                 let match;
                 linkRegex.lastIndex = 0;

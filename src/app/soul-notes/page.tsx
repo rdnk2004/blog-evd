@@ -5,6 +5,14 @@ import Link from "next/link";
 
 const notes = [
   {
+    title: "A Reflection on the Paths We Take",
+    snippet: "Observing different journeys, each unique in its choices, struggles, and destinations ... made me wonder how differently a journey can unfold from what was once imagined...",
+    slug: "a-reflection-on-the-paths-we-take",
+    date: "October 27, 2026",
+    category: "Soul",
+    readTime: "3 min read"
+  },
+  {
     title: "When Silence Spoke Love",
     snippet: "What began with glances and a handmade card slowly grew into something far stronger than either of them could have imagined .... a journey of two worlds learning to become one.",
     slug: "when-silence-spoke-love",
