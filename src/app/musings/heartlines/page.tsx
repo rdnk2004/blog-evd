@@ -9,6 +9,12 @@ import Link from "next/link";
 
 const poems = [
   {
+    title: "In the Quiet Corners of Your World",
+    snippet: "She wished to walk beside you,\nif only for a little while,\nfollowing the rhythm of your footsteps,\nadoring the path you chose...",
+    slug: "in-the-quiet-corners-of-your-world",
+    date: "November 18, 2026",
+  },
+  {
     title: "Feeling Rooted",
     snippet: "Living miles away,\na place lingers within.\n\nJust the very thought of it\nfills my heart with a quiet peace.",
     slug: "feeling-rooted",
