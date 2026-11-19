@@ -1,0 +1,628 @@
+"use client";
+
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import type { SeriesMeta, SoulNote, Musing, Poem } from "@/lib/content";
+
+/* ────────────────────────────────────────────
+   HERO SECTION
+   ──────────────────────────────────────────── */
+
+function Petal({
+  style,
+  color,
+}: {
+  style: React.CSSProperties;
+  color: string;
+}) {
+  return (
+    <div
+      className="petal pointer-events-none"
+      style={{ background: color, ...style }}
+    />
+  );
+}
+
+function HeroSection() {
+  const petals = [
+    { left: "5%", animationDuration: "12s", animationDelay: "0s", color: "#D8B4A8cc" },
+    { left: "15%", animationDuration: "9s", animationDelay: "2s", color: "#A8B5A1aa" },
+    { left: "28%", animationDuration: "14s", animationDelay: "1s", color: "#D8B4A888" },
+    { left: "42%", animationDuration: "10s", animationDelay: "4s", color: "#A6B6C888" },
+    { left: "58%", animationDuration: "11s", animationDelay: "0.5s", color: "#D8B4A8bb" },
+    { left: "70%", animationDuration: "13s", animationDelay: "3s", color: "#A8B5A1bb" },
+    { left: "82%", animationDuration: "8s", animationDelay: "1.5s", color: "#D8B4A8aa" },
+    { left: "93%", animationDuration: "15s", animationDelay: "2.5s", color: "#A6B6C8bb" },
+  ];
+
+  return (
+    <section className="relative w-full min-h-[100svh] flex flex-col items-center justify-center pt-24 pb-20 overflow-hidden">
+      {/* Bottom section transition — fades hero into the warm beige of JourneySection */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-[10] pointer-events-none"
+        style={{
+          height: "25%",
+          background: "linear-gradient(to bottom, transparent 0%, #F7F2EB 100%)",
+        }}
+      />
+      {/* Sky gradient — layered dusk palette */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            "linear-gradient(175deg, #6B8CAE 0%, #9EB8C5 18%, #CFA989 42%, #E8C9A0 58%, #F0DFC0 75%, #F7EDD8 90%, #F3EDE4 100%)",
+        }}
+      />
+
+      {/* Stars */}
+      {[
+        { top: "15%", left: "12%", s: "6px", d: "0s" },
+        { top: "25%", left: "30%", s: "4px", d: "0.5s" },
+        { top: "18%", left: "55%", s: "5px", d: "1.1s" },
+        { top: "22%", left: "72%", s: "3px", d: "0.3s" },
+        { top: "12%", left: "85%", s: "6px", d: "1.4s" },
+        { top: "28%", left: "92%", s: "4px", d: "0.8s" },
+        { top: "35%", left: "18%", s: "3px", d: "1.7s" },
+        { top: "40%", left: "45%", s: "4px", d: "2.1s" },
+        { top: "30%", left: "62%", s: "5px", d: "0.6s" },
+      ].map((star, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            top: star.top,
+            left: star.left,
+            width: star.s,
+            height: star.s,
+            background: "white",
+            boxShadow: "0 0 8px 2px rgba(255,255,255,0.8)",
+            animation: `twinkle ${2.5 + i * 0.3}s ease-in-out infinite`,
+            animationDelay: star.d,
+          }}
+        />
+      ))}
+
+      {/* Perfect Glowing Crescent Moon */}
+      <div
+        className="absolute z-0"
+        style={{
+          top: "15%",
+          right: "10%",
+          width: "min(70px, 10vw)",
+          height: "min(70px, 10vw)",
+          filter: "drop-shadow(0 0 15px rgba(255,255,230,0.8)) drop-shadow(0 0 50px rgba(255,250,200,0.4))",
+          transform: "rotate(-15deg)",
+        }}
+      >
+        <svg viewBox="0 0 100 100" className="w-full h-full fill-[#FFFFFA]">
+          <mask id="crescentMask">
+            <rect width="100" height="100" fill="white" />
+            <circle cx="35" cy="40" r="48" fill="black" />
+          </mask>
+          <circle cx="50" cy="50" r="48" mask="url(#crescentMask)" />
+        </svg>
+      </div>
+
+      {/* Falling petals */}
+      {petals.map((p, i) => (
+        <Petal
+          key={i}
+          color={p.color}
+          style={{
+            left: p.left,
+            top: "-20px",
+            animationDuration: p.animationDuration,
+            animationDelay: p.animationDelay,
+            width: `${6 + (i % 3) * 2}px`,
+            height: `${8 + (i % 3) * 3}px`,
+          }}
+        />
+      ))}
+
+      {/* Hero text content */}
+      <div
+        className="relative z-20 text-center flex flex-col items-center px-4 sm:px-6"
+        style={{ maxWidth: "960px", margin: "0 auto" }}
+      >
+        {/* Eyebrow */}
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 md:mb-5">
+          <div className="h-px w-8 sm:w-10 md:w-16 bg-charcoal/30" />
+          <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.35em] font-semibold text-charcoal/60">
+            A creative sanctuary
+          </span>
+          <div className="h-px w-8 sm:w-10 md:w-16 bg-charcoal/30" />
+        </div>
+
+        {/* Main heading */}
+        <h1
+          className="font-alex text-[4rem] sm:text-[6rem] md:text-[10rem] leading-none text-charcoal mb-4 sm:mb-5 md:mb-6"
+          style={{
+            textShadow: "0 4px 30px rgba(255,255,255,0.8), 0 1px 0 rgba(255,255,255,0.5)",
+            letterSpacing: "0.04em",
+          }}
+        >
+          DeepaRam
+        </h1>
+
+        {/* Tagline pill */}
+        <div className="glass-card px-6 py-3 md:px-10 md:py-4 rounded-full mb-8 md:mb-12 border border-white/50 bg-white/40 shadow-sm w-max mx-auto">
+          <p className="text-charcoal/75 uppercase tracking-[0.3em] text-[9px] md:text-[11px] font-semibold">
+            Painting emotions in stillness
+          </p>
+        </div>
+
+        {/* Category Navigation */}
+        <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-4 sm:gap-x-5 md:gap-x-8 mt-6 max-w-[90vw]">
+          {["Nature", "✦", "Art", "✦", "Words", "✦", "Silence", "✦", "Soul"].map((item, i) => (
+            item === "✦" ? (
+              <span key={i} className="text-charcoal/30 select-none text-[8px] sm:text-[10px]">
+                {item}
+              </span>
+            ) : (
+              <span key={i} className="text-[10px] sm:text-[11px] md:text-[12px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-semibold text-charcoal/60">
+                {item}
+              </span>
+            )
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   JOURNEY SECTION
+   ──────────────────────────────────────────── */
+
+function JourneySection() {
+  return (
+    <section
+      id="journey"
+      className="w-full bg-gradient-to-b from-[#F7F2EB] to-[#F3EDE4] py-20 px-4 sm:px-6 md:py-36 relative overflow-hidden"
+    >
+      <div className="absolute top-[-5%] right-[-5%] w-[45vw] h-[45vw] bg-misty-blue/8 rounded-full blur-[150px] pointer-events-none animate-breathe" />
+      <div className="absolute bottom-[-5%] left-[-5%] w-[50vw] h-[50vw] bg-dusty-rose/8 rounded-full blur-[150px] pointer-events-none animate-breathe" style={{ animationDelay: "3s" }} />
+
+      <div
+        className="absolute right-[-8%] top-[10%] w-[30vw] h-[30vw] rounded-full border border-warm-taupe/10 animate-rotate-slow pointer-events-none"
+      >
+        <div className="absolute inset-4 rounded-full border border-warm-taupe/8" />
+        <div className="absolute inset-10 rounded-full border border-warm-taupe/6" />
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+        <div className="space-y-7 text-center reveal-on-scroll" style={{ transitionDelay: "0.2s" }}>
+          <div className="flex items-center justify-center gap-4">
+            <div className="h-px w-12 bg-warm-taupe/50" />
+            <span className="uppercase tracking-[0.28em] text-[10px] font-bold text-warm-taupe">
+              The Story
+            </span>
+            <div className="h-px w-12 bg-warm-taupe/50" />
+          </div>
+
+          <h2 className="font-alex text-6xl sm:text-7xl md:text-8xl text-charcoal leading-tight">
+            About Me
+          </h2>
+
+          <blockquote className="relative pl-5 border-l-2 border-dusty-rose/50 text-left italic text-warm-taupe text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+            &quot;A gentle soul with a heart that feels deeply and a mind that turns moments into quiet poetry.&quot;
+          </blockquote>
+
+          <div className="space-y-5 text-base md:text-lg leading-relaxed text-charcoal/70 font-light max-w-2xl mx-auto">
+            <p>
+              DeepaRam writes from a place where emotions meet stillness. Her words are not just written, but felt..shaped by quiet reflections,spiritual experiences and the gentle unfolding of everyday moments. With a heart deeply attuned to the unseen and a soul that finds meaning in silence, she transforms life’s subtle whispers into poetic expressions.
+            </p>
+            <p>
+              Through her writing, she invites readers into a world of introspection, where pain softens, love lingers and the divine quietly reveals itself. Each piece is a journey..tender,honest and deeply personal..yet universally resonant.
+            </p>
+            <p>
+              In every line she pens, there is a piece of her soul..soft, sincere and beautifully aware.
+            </p>
+            
+            <div className="pt-4 text-center italic text-warm-taupe/90 space-y-1">
+              <p>Pause here for a while….</p>
+              <p>Breathe….</p>
+              <p>Feel….</p>
+              <p>And perhaps,</p>
+              <p>Somewhere within these words,</p>
+              <p>You may find a part of yourself.</p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4 justify-center pt-2">
+            <a
+              href="#journal"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-charcoal text-soft-beige text-xs uppercase tracking-[0.2em] font-semibold rounded-full hover:bg-warm-taupe transition-all duration-400 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              Read My Journal
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   ART SECTION
+   ──────────────────────────────────────────── */
+
+function ArtSection() {
+  return (
+    <section id="art-home" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-white/50 relative overflow-hidden border-t border-warm-taupe/10">
+      <div className="absolute top-[-10%] right-[-5%] w-[45vw] h-[45vw] bg-dusty-rose/10 rounded-full blur-[140px] pointer-events-none animate-breathe" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[45vw] h-[45vw] bg-sage/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+        
+        {/* Text Col */}
+        <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left reveal-on-scroll">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40" />
+            <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-warm-taupe">The Journey of Colors</span>
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40 md:hidden" />
+          </div>
+          <h2 className="font-alex text-5xl sm:text-7xl text-charcoal mb-4 sm:mb-6 leading-tight">
+            Art Gallery
+          </h2>
+          <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
+            A quiet passion explored through acrylics and pencil sketches. Where colors speak the silent languages of the soul.
+          </p>
+          <Link
+            href="/art"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
+          >
+            Explore Gallery
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Art Preview Images */}
+        <div className="md:w-2/3 w-full grid grid-cols-2 gap-4 sm:gap-6 relative">
+          <div className="flex flex-col gap-4 sm:gap-6 pt-8 md:pt-12 reveal-on-scroll">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/canvas-1.jpeg" alt="Lakeside in Bloom" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/face-portrait.jpeg" alt="Pencil Sketch" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 sm:gap-6 reveal-on-scroll" style={{ transitionDelay: '0.2s' }}>
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/kathakali-1.jpeg" alt="Kathakali Art" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] group bg-white/30">
+              <Image src="/gallery/swan.jpeg" alt="Swan" fill className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" sizes="(max-width: 768px) 50vw, 33vw" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   SERIES SECTION (HOMEPAGE PREVIEW)
+   ──────────────────────────────────────────── */
+
+function SeriesSection({ seriesList }: { seriesList: SeriesMeta[] }) {
+  if (seriesList.length === 0) return null;
+
+  return (
+    <section id="series" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-[#EBE5DE] relative overflow-hidden border-t border-warm-taupe/10">
+      <div className="absolute top-[-10%] right-[10%] w-[40vw] h-[40vw] bg-dusty-rose/8 rounded-full blur-[140px] pointer-events-none animate-breathe" />
+      <div className="absolute bottom-[-10%] left-[10%] w-[30vw] h-[30vw] bg-misty-blue/8 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20">
+        
+        {/* Text Col */}
+        <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left reveal-on-scroll">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40" />
+            <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-warm-taupe">Series</span>
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40 md:hidden" />
+          </div>
+          <h2 className="font-alex text-5xl sm:text-7xl text-charcoal mb-4 sm:mb-6 leading-tight">
+            Ongoing Tales
+          </h2>
+          <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
+            Stories told in chapters, unfolding gradually over time, exploring themes of life, fate, and faith.
+          </p>
+          <Link
+            href="/series"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
+          >
+            Read the Series
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Stories Col */}
+        <div className="md:w-2/3 grid grid-cols-1 gap-6 md:gap-8 relative w-full">
+           {seriesList.slice(0, 1).map((story, i) => (
+             <Link
+               key={story.slug}
+               href={`/series/${story.slug}`}
+               className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
+               style={{ transitionDelay: `${i * 0.15}s` }}
+             >
+                <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 font-semibold mb-6">{story.displayDate}</span>
+                <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 group-hover:text-warm-taupe transition-colors duration-300">
+                  {story.title}
+                </h3>
+                <p className="text-charcoal/70 font-light text-sm leading-loose whitespace-pre-line">
+                  {story.description}
+                </p>
+                <div className="mt-8 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-dusty-rose group-hover:text-warm-taupe transition-colors duration-400">
+                  Read Series
+                  <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </div>
+             </Link>
+           ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   FEATURED / QUOTE SECTION
+   ──────────────────────────────────────────── */
+
+function QuoteSection() {
+  return (
+    <section className="w-full py-16 px-4 sm:px-6 md:py-28 bg-charcoal text-soft-beige relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] h-px bg-gradient-to-r from-transparent via-warm-taupe/40 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60vw] h-px bg-gradient-to-r from-transparent via-warm-taupe/40 to-transparent" />
+
+      <div className="max-w-4xl mx-auto text-center reveal-on-scroll">
+        <div className="font-alex text-[6rem] sm:text-[8rem] md:text-[12rem] text-warm-taupe/10 leading-none select-none" aria-hidden>
+          &quot;
+        </div>
+        <blockquote className="-mt-10 sm:-mt-16 md:-mt-20 font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl text-soft-beige/90 leading-relaxed font-light italic">
+          In silence, I paint.{" "}
+          <span className="text-dusty-rose/80">In words, I breathe.</span>{" "}
+          <span className="text-sage/80">In stillness, I become.</span>
+        </blockquote>
+        <div className="mt-6 sm:mt-8 flex items-center justify-center gap-3 sm:gap-4">
+          <div className="h-px w-8 sm:w-12 bg-warm-taupe/30" />
+          <span className="font-alex text-xl sm:text-2xl text-warm-taupe/60">DeepaRam</span>
+          <div className="h-px w-8 sm:w-12 bg-warm-taupe/30" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   JOURNAL PREVIEW SECTION
+   ──────────────────────────────────────────── */
+
+function JournalSection({ soulNotes }: { soulNotes: SoulNote[] }) {
+  if (soulNotes.length === 0) return null;
+
+  return (
+    <section id="journal" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-[#F3EDE4] relative overflow-hidden">
+      <div className="absolute top-[-10%] left-[-5%] w-[50vw] h-[50vw] bg-sage/8 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[50vw] h-[50vw] bg-misty-blue/8 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20">
+        
+        {/* Text Col */}
+        <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left reveal-on-scroll">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40" />
+            <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-warm-taupe">Soul Notes</span>
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40 md:hidden" />
+          </div>
+          <h2 className="font-alex text-5xl sm:text-7xl text-charcoal mb-4 sm:mb-6 leading-tight">
+            Thoughts &<br/>Reflections
+          </h2>
+          <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
+            Where thoughts rest and unfold. Notes from the quiet spaces between heartbeats.
+          </p>
+          <Link
+            href="/soul-notes"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
+          >
+            Explore Entries
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Posts Col */}
+        <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 relative w-full">
+           {soulNotes.slice(0, 2).map((post, i) => (
+             <Link
+               key={post.slug}
+               href={`/soul-notes/${post.slug}`}
+               className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
+               style={{ transitionDelay: `${i * 0.15}s` }}
+             >
+                <div className="flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/70 font-semibold">
+                  <span>{post.displayDate}</span>
+                </div>
+                <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 group-hover:text-warm-taupe transition-colors duration-300">
+                  {post.title}
+                </h3>
+                <p className="text-charcoal/70 font-light text-sm leading-loose line-clamp-4">
+                  {post.snippet}
+                </p>
+                <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-dusty-rose group-hover:text-warm-taupe transition-colors duration-400">
+                  Read More
+                  <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </div>
+             </Link>
+           ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   MUSINGS & HEARTLINES SECTION
+   ──────────────────────────────────────────── */
+
+function MusingsSection({
+  musings,
+  poems,
+}: {
+  musings: Musing[];
+  poems: Poem[];
+}) {
+  return (
+    <section id="musings-home" className="w-full py-16 px-4 sm:px-6 md:py-32 bg-white/40 relative overflow-hidden">
+      <div className="absolute top-[-10%] right-[10%] w-[40vw] h-[40vw] bg-[#A6B6C8]/10 rounded-full blur-[140px] pointer-events-none animate-breathe" />
+      
+      <div className="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
+        
+        {/* Text Col */}
+        <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left reveal-on-scroll">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40" />
+            <span className="uppercase tracking-[0.3em] text-[10px] font-bold text-warm-taupe">Musings & Heartlines</span>
+            <div className="h-px w-6 sm:w-8 md:w-12 bg-warm-taupe/40 md:hidden" />
+          </div>
+          <h2 className="font-alex text-5xl sm:text-7xl text-charcoal mb-4 sm:mb-6 leading-tight">
+            Wandering Thoughts
+          </h2>
+          <p className="text-charcoal/50 font-light text-sm sm:text-base leading-relaxed mb-8">
+            Unstructured ideas, gentle observations, quiet conversations with the self, and delicate poetry.
+          </p>
+          <Link
+            href="/musings"
+            className="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-warm-taupe/20 text-charcoal bg-white/40 backdrop-blur-md text-[10px] sm:text-xs uppercase tracking-[0.22em] font-semibold rounded-full hover:bg-white hover:shadow-lg transition-all duration-400"
+          >
+            Read the Collection
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Content Col */}
+        <div className="md:w-2/3 flex flex-col gap-8 relative w-full max-w-xl">
+           
+           <div className="grid grid-cols-1 gap-6 md:gap-8">
+             {musings.slice(0, 1).map((musing, i) => (
+               <Link
+                 key={musing.slug}
+                 href={`/musings/${musing.slug}`}
+                 className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
+                 style={{ transitionDelay: `${i * 0.15}s` }}
+               >
+                  <div className="flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/70 font-semibold">
+                    <span>🐾</span>
+                    <span className="px-2 py-0.5 rounded-full border border-warm-taupe/20 bg-white/50">{musing.category}</span>
+                    <span className="opacity-40">·</span>
+                    <span>{musing.displayDate}</span>
+                  </div>
+                  <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 group-hover:text-warm-taupe transition-colors duration-300">
+                    {musing.title}
+                  </h3>
+                  <p className="text-charcoal/70 font-light text-sm leading-loose">
+                    {musing.snippet}
+                  </p>
+                  <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-dusty-rose group-hover:text-warm-taupe transition-colors duration-400">
+                    Read Musing
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+               </Link>
+             ))}
+           </div>
+
+           {/* Heartlines Divider */}
+           <div className="w-full flex items-center gap-4 mt-6 mb-2 reveal-on-scroll">
+             <div className="h-px flex-1 bg-warm-taupe/20" />
+             <span className="uppercase tracking-[0.25em] text-[10px] font-bold text-warm-taupe/60 text-center">Heartlines Poetry</span>
+             <div className="h-px flex-1 bg-warm-taupe/20" />
+           </div>
+
+           {/* Heartlines Cards */}
+           <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+             {poems.slice(0, 4).map((poem, i) => (
+               <Link
+                 key={poem.slug}
+                 href={`/musings/heartlines/${poem.slug}`}
+                 className="group flex flex-col items-center text-center p-8 sm:p-8 rounded-3xl bg-warm-taupe/5 border border-warm-taupe/20 backdrop-blur-md hover:bg-warm-taupe/10 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
+                 style={{ transitionDelay: `${i * 0.15}s` }}
+               >
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 font-semibold mb-4">{poem.displayDate}</span>
+                  <h3 className="font-serif text-xl text-charcoal mb-4 italic group-hover:text-warm-taupe transition-colors duration-300">
+                    {poem.title}
+                  </h3>
+                  <p className="text-charcoal/60 font-light text-xs leading-loose italic whitespace-pre-line line-clamp-4">
+                    {poem.snippet}
+                  </p>
+                  <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-dusty-rose group-hover:text-warm-taupe transition-colors duration-400">
+                    Read Poem
+                    <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </div>
+               </Link>
+             ))}
+           </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ────────────────────────────────────────────
+   PAGE ROOT CLIENT
+   ──────────────────────────────────────────── */
+
+export default function HomeClient({
+  series,
+  soulNotes,
+  musings,
+  poems,
+}: {
+  series: SeriesMeta[];
+  soulNotes: SoulNote[];
+  musings: Musing[];
+  poems: Poem[];
+}) {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+    document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="flex flex-col w-full overflow-x-hidden relative">
+      <HeroSection />
+      <JourneySection />
+      <ArtSection />
+      <SeriesSection seriesList={series} />
+      <QuoteSection />
+      <JournalSection soulNotes={soulNotes} />
+      <MusingsSection musings={musings} poems={poems} />
+    </div>
+  );
+}

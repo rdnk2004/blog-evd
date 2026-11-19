@@ -1,0 +1,144 @@
+{
+  "acrylicArt": [
+    {
+      "id": "acrylic-1",
+      "src": [
+        "/gallery/canvas-1.jpeg"
+      ],
+      "caption": "My first acrylic painting - Lakeside in Bloom",
+      "date": "2024-01-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-2",
+      "src": [
+        "/gallery/swan.jpeg"
+      ],
+      "caption": "An elegant swan. Beauty in every ripple.",
+      "date": "2024-02-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-3",
+      "src": [
+        "/gallery/kathakali-1.jpeg"
+      ],
+      "caption": "A face that speaks beyond words.",
+      "date": "2024-03-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-4",
+      "src": [
+        "/gallery/radhekrishna.jpeg"
+      ],
+      "caption": "The universe listens with her.",
+      "date": "2024-04-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-5",
+      "src": [
+        "/gallery/peonyflower.jpeg"
+      ],
+      "caption": "Elegance in layers.",
+      "date": "2024-05-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-6",
+      "src": [
+        "/gallery/fishesonpond.jpeg"
+      ],
+      "caption": "pond of colours.",
+      "date": "2024-06-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-7",
+      "src": [
+        "/gallery/shivaparvati.jpeg"
+      ],
+      "caption": "Shiva - Parvati. One Energy",
+      "date": "2024-07-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-8",
+      "src": [
+        "/gallery/guruvaryoorpan.jpeg"
+      ],
+      "caption": "Divine in Blue",
+      "date": "2024-08-01",
+      "draft": false
+    },
+    {
+      "id": "acrylic-9",
+      "src": [
+        "/gallery/beach.jpeg"
+      ],
+      "caption": "Rhythm of the sea",
+      "date": "2024-09-01",
+      "draft": false
+    }
+  ],
+  "pencilArt": [
+    {
+      "id": "pencil-1",
+      "src": [
+        "/gallery/face-portrait.jpeg"
+      ],
+      "caption": "Sketched in silence",
+      "date": "2024-01-15",
+      "draft": false
+    },
+    {
+      "id": "pencil-2",
+      "src": [
+        "/gallery/eye-1.jpeg",
+        "/gallery/eye-2.jpeg"
+      ],
+      "caption": "Eyes speak louder than words.",
+      "date": "2024-02-15",
+      "draft": false
+    },
+    {
+      "id": "pencil-3",
+      "src": [
+        "/gallery/fish.jpeg"
+      ],
+      "caption": "Betta Fish - Grace in Grey",
+      "date": "2024-03-15",
+      "draft": false
+    },
+    {
+      "id": "pencil-4",
+      "src": [
+        "/gallery/rose.jpeg",
+        "/gallery/flower.jpeg"
+      ],
+      "caption": "Beauty with Thorns",
+      "date": "2024-04-15",
+      "draft": false
+    },
+    {
+      "id": "pencil-5",
+      "src": [
+        "/gallery/butterfly-blue.jpeg",
+        "/gallery/butterfly-yellow.jpeg"
+      ],
+      "caption": "Born to Transform",
+      "date": "2024-05-15",
+      "draft": false
+    },
+    {
+      "id": "pencil-6",
+      "src": [
+        "/gallery/applefork.jpeg"
+      ],
+      "caption": "Still Life",
+      "date": "2024-06-15",
+      "draft": false
+    }
+  ]
+}
