@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { ChapterWithNav } from "@/lib/content";
+import { PeacockAuraSpots, PeacockDivider, PeacockFeather } from "@/app/components/peacock-feather";
 
 const renderFormattedText = (text: string) => {
   const parts = text.split(/(\*\*|\*)/g);
@@ -38,6 +39,8 @@ export default function ChapterClient({
   seriesSlug: string;
   chapter: ChapterWithNav;
 }) {
+  const hasFeatherEffect = Boolean(chapter.featherEffect || seriesSlug === "whispers-of-the-divine");
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -69,6 +72,9 @@ export default function ChapterClient({
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-dusty-rose/10 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-sage/10 rounded-full blur-[150px] pointer-events-none" />
 
+        {/* Subtle Peacock Feather Divine Effect (At a few spots) */}
+        {hasFeatherEffect && <PeacockAuraSpots />}
+
         <div className="relative z-10 w-full max-w-2xl flex flex-col items-center text-center">
           <header className="w-full flex flex-col items-center reveal-on-scroll">
             <Link
@@ -94,7 +100,11 @@ export default function ChapterClient({
               {chapter.title}
             </h1>
 
-            <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+            {hasFeatherEffect ? (
+              <PeacockDivider className="mb-12 sm:mb-16 reveal-on-scroll" />
+            ) : (
+              <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+            )}
           </header>
 
           {/* Optional Top-Level Featured Image */}
@@ -182,7 +192,13 @@ export default function ChapterClient({
           )}
 
           {/* Footer Signature */}
-          <div className="w-12 h-px bg-warm-taupe/30 mt-8 sm:mt-12 mb-5 reveal-on-scroll" />
+          <div className="flex items-center justify-center gap-3 mt-8 sm:mt-12 mb-5 reveal-on-scroll">
+            <div className="w-8 h-px bg-warm-taupe/30" />
+            {hasFeatherEffect && (
+              <PeacockFeather width={20} height={34} className="transform rotate-12 opacity-80" />
+            )}
+            <div className="w-8 h-px bg-warm-taupe/30" />
+          </div>
           <span className="font-alex text-2xl sm:text-3xl text-warm-taupe/60 reveal-on-scroll">~ DeepaRam 🌙</span>
 
           {/* Dynamic Chapter Navigation (replaces hardcoded ternary chain) */}

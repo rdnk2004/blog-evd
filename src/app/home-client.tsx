@@ -347,19 +347,23 @@ function SeriesSection({ seriesList }: { seriesList: SeriesMeta[] }) {
         </div>
 
         {/* Stories Col */}
-        <div className="md:w-2/3 grid grid-cols-1 gap-6 md:gap-8 relative w-full">
-           {seriesList.slice(0, 1).map((story, i) => (
+        <div className={`md:w-2/3 grid grid-cols-1 ${seriesList.length > 1 ? 'sm:grid-cols-2' : ''} gap-6 md:gap-8 relative w-full`}>
+           {seriesList.slice(0, 2).map((story, i) => (
              <Link
                key={story.slug}
                href={`/series/${story.slug}`}
                className="group flex flex-col items-start text-left p-8 sm:p-10 rounded-3xl bg-white/40 border border-white/60 backdrop-blur-md hover:bg-white/80 transition-all duration-500 reveal-on-scroll shadow-[0_4px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]"
                style={{ transitionDelay: `${i * 0.15}s` }}
              >
-                <span className="text-[10px] uppercase tracking-[0.2em] text-warm-taupe/60 font-semibold mb-6">{story.displayDate}</span>
+                <div className="flex items-center gap-2 mb-4 text-[10px] uppercase tracking-[0.2em] text-warm-taupe/70 font-semibold">
+                  <span className="px-2.5 py-1 rounded-full border border-warm-taupe/20 bg-white/50">{story.category}</span>
+                  <span className="opacity-40">·</span>
+                  <span>{story.displayDate}</span>
+                </div>
                 <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 group-hover:text-warm-taupe transition-colors duration-300">
                   {story.title}
                 </h3>
-                <p className="text-charcoal/70 font-light text-sm leading-loose whitespace-pre-line">
+                <p className="text-charcoal/70 font-light text-sm leading-loose whitespace-pre-line line-clamp-3">
                   {story.description}
                 </p>
                 <div className="mt-8 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-dusty-rose group-hover:text-warm-taupe transition-colors duration-400">

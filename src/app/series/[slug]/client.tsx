@@ -3,8 +3,11 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import type { SeriesWithChapters } from "@/lib/content";
+import { PeacockDivider, PeacockFeather } from "@/app/components/peacock-feather";
 
 export default function SeriesDetailClient({ series }: { series: SeriesWithChapters }) {
+  const isDivineSeries = series.slug === "whispers-of-the-divine";
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const observer = new IntersectionObserver(
@@ -35,6 +38,19 @@ export default function SeriesDetailClient({ series }: { series: SeriesWithChapt
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-warm-taupe/10 rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[20%] right-[-10%] w-[40vw] h-[40vw] bg-sage/10 rounded-full blur-[150px] pointer-events-none" />
 
+        {isDivineSeries && (
+          <div
+            className="absolute top-[120px] right-[5%] opacity-35 pointer-events-none hidden md:block"
+            style={{
+              transform: "rotate(20deg)",
+              filter: "drop-shadow(0 4px 20px rgba(10, 147, 150, 0.2))",
+              animation: "float-slow 9s ease-in-out infinite",
+            }}
+          >
+            <PeacockFeather width={120} height={210} />
+          </div>
+        )}
+
         <div className="relative z-10 w-full max-w-3xl flex flex-col items-center text-center reveal-on-scroll">
           <Link
             href="/series"
@@ -54,7 +70,11 @@ export default function SeriesDetailClient({ series }: { series: SeriesWithChapt
             {series.description}
           </p>
 
-          <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+          {isDivineSeries ? (
+            <PeacockDivider className="mb-12 sm:mb-16 reveal-on-scroll" />
+          ) : (
+            <div className="w-px h-16 sm:h-24 bg-gradient-to-b from-warm-taupe/40 to-transparent mb-12 sm:mb-16" />
+          )}
         </div>
       </section>
 

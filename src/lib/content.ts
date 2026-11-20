@@ -77,6 +77,7 @@ export interface Chapter {
   image: string | null;
   content: string;
   gratitude: ChapterGratitude | null;
+  featherEffect?: boolean;
   draft: boolean;
 }
 
