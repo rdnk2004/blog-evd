@@ -143,16 +143,19 @@ export default function ChapterClient({
               if (cleanParagraph.startsWith("[CENTER]")) {
                 isCentered = true;
                 cleanParagraph = cleanParagraph.replace("[CENTER]", "").trim();
+              } else if (cleanParagraph.toLowerCase().startsWith("to be continued")) {
+                isCentered = true;
               }
 
-              const isShortImpact = cleanParagraph.length < 50 && cleanParagraph.includes('…');
+              const isShortImpact = cleanParagraph.length < 50 && (cleanParagraph.includes('…') || cleanParagraph.includes('..'));
+              const isContinued = cleanParagraph.toLowerCase().startsWith("to be continued");
 
               return (
                 <p
                   key={index}
                   className={`mb-8 sm:mb-12 font-serif font-light text-[1.1rem] sm:text-[1.2rem] md:text-[1.3rem] leading-[2.1] sm:leading-[2.5] whitespace-pre-line tracking-wide reveal-on-scroll transition-all duration-700
                     ${isCentered ? 'text-center' : 'text-left'}
-                    ${isShortImpact ? 'text-charcoal' : 'text-charcoal/90'}
+                    ${isContinued ? 'italic text-warm-taupe/90 tracking-widest text-lg sm:text-xl pt-4' : isShortImpact ? 'text-charcoal' : 'text-charcoal/90'}
                   `}
                   style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}
                 >
