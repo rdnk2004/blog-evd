@@ -140,6 +140,18 @@ export default function ChapterClient({
 
               let cleanParagraph = paragraph;
               let isCentered = false;
+              if (cleanParagraph.startsWith("### ")) {
+                const headingText = cleanParagraph.replace("### ", "").trim();
+                return (
+                  <div key={index} className="pt-8 sm:pt-12 pb-4 reveal-on-scroll" style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}>
+                    <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal font-normal tracking-wide mb-3 text-left">
+                      {headingText}
+                    </h2>
+                    <div className="w-12 h-px bg-warm-taupe/40 mb-6" />
+                  </div>
+                );
+              }
+
               if (cleanParagraph.startsWith("[CENTER]")) {
                 isCentered = true;
                 cleanParagraph = cleanParagraph.replace("[CENTER]", "").trim();
@@ -149,6 +161,26 @@ export default function ChapterClient({
 
               const isShortImpact = cleanParagraph.length < 50 && (cleanParagraph.includes('…') || cleanParagraph.includes('..'));
               const isContinued = cleanParagraph.toLowerCase().startsWith("to be continued");
+
+              if (isContinued && chapter.nav.next) {
+                return (
+                  <div key={index} className="w-full flex flex-col items-center pt-8 pb-4 reveal-on-scroll" style={{ transitionDelay: `${Math.min(index * 0.05, 0.3)}s` }}>
+                    <Link
+                      href={`/series/${seriesSlug}/${chapter.nav.next.slug}`}
+                      className="group inline-flex flex-col sm:flex-row items-center gap-3 px-8 py-4 rounded-full bg-white/50 border border-warm-taupe/20 hover:bg-white/90 hover:border-warm-taupe/40 backdrop-blur-md transition-all duration-400 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+                    >
+                      <span className="font-serif italic text-warm-taupe group-hover:text-charcoal tracking-widest text-base sm:text-lg transition-colors">
+                        {renderFormattedText(cleanParagraph)}
+                      </span>
+                      <span className="hidden sm:inline text-warm-taupe/40">·</span>
+                      <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-warm-taupe group-hover:text-charcoal flex items-center gap-1.5 transition-colors">
+                        Continue to {chapter.nav.next.chapterLabel || "Next Chapter"}
+                        <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform">→</span>
+                      </span>
+                    </Link>
+                  </div>
+                );
+              }
 
               return (
                 <p
