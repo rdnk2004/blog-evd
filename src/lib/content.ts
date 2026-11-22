@@ -78,6 +78,8 @@ export interface Chapter {
   content: string;
   gratitude: ChapterGratitude | null;
   featherEffect?: boolean;
+  birdEffect?: boolean;
+  storyGroup?: string;
   draft: boolean;
 }
 
@@ -85,6 +87,7 @@ export interface ChapterNavigationItem {
   slug: string;
   title: string;
   chapterLabel?: string | null;
+  storyGroup?: string;
 }
 
 export interface ChapterNavigation {
@@ -278,8 +281,18 @@ export function getChapter(seriesSlug: string, chapterSlug: string): ChapterWith
   if (index === -1) return null;
 
   const current = chapters[index];
-  const prev = index > 0 ? chapters[index - 1] : null;
-  const next = index < chapters.length - 1 ? chapters[index + 1] : null;
+  
+  // Only connect chapters within the same story group (if storyGroup is specified)
+  const prevCandidate = index > 0 ? chapters[index - 1] : null;
+  const nextCandidate = index < chapters.length - 1 ? chapters[index + 1] : null;
+
+  const prev = prevCandidate && (!current.storyGroup || current.storyGroup === prevCandidate.storyGroup) 
+    ? prevCandidate 
+    : null;
+
+  const next = nextCandidate && (!current.storyGroup || current.storyGroup === nextCandidate.storyGroup) 
+    ? nextCandidate 
+    : null;
 
   const nav: ChapterNavigation = {
     previous: prev
@@ -287,6 +300,7 @@ export function getChapter(seriesSlug: string, chapterSlug: string): ChapterWith
           slug: prev.slug,
           title: prev.title,
           chapterLabel: prev.chapterLabel,
+          storyGroup: prev.storyGroup,
         }
       : null,
     next: next
@@ -294,6 +308,7 @@ export function getChapter(seriesSlug: string, chapterSlug: string): ChapterWith
           slug: next.slug,
           title: next.title,
           chapterLabel: next.chapterLabel,
+          storyGroup: next.storyGroup,
         }
       : null,
   };
